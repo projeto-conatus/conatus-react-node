@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap');
+
+body {
+  font-family: 'Nunito', sans-serif;
+}
+
+.tituloLogin {
+  font-weight: bold;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  margin-top: 16%;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.formulario img {
+  width: 150px;
+  display: flex;
+  margin: 1em auto .5em;
+}
+
+.formulario {
+  width: 90%;
+  margin: .5em  auto 0;
+  padding-top: 1em;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  background-color:#e5e5e5;
+  border-radius: .3em;
+  box-sizing: border-box;
+}
+
+
+form {
+  display: flex;
+  flex-direction: column;
+
+}
+
+label {
+  font-size: 1.2em;
+  letter-spacing: .1em;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: .3em;
+  color: #3F3D56;
+  text-align: center;
+}
+
+input {
+  box-sizing: border-box;
+  padding-left: .3em;
+  margin-bottom: 1.2em;
+  border-radius: .3em;
+  border: none;
+  width: 190px;
+  height: 36px;
+}
+
+.botaoEntrar {
+  background-color: #4D57C9 ;
+  color: #E5E5E5;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  font-weight: bold;
+  text-align: center;
+  border: none;
+  padding: .5em;
+  font-size: 1.2em;
+  border-radius: .3em;
+  margin:.5rem 0 1rem;
+}
+
+.esqueceuSenha {
+  color: #F25F5C;
+  text-decoration: underline;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: .01rem;
+  font-weight: bold;
+}
+
+.feedback_seg {
+    background-color: red ;
+    color:black;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: .01rem;
+    padding: 0.5rem;
+    border-radius: 1.3em;
+}
+
+.feedback_cadSucesso {
+  color:green;
+  text-align: center;
+  padding: 0.5rem;
+}
+
+.feedback_cadErro {
+  color: red;
+  text-align: center;
+  padding: 0.5rem;
+}
+@media (min-width: 940px) {
+  .tituloLogin {
+    margin-top: 2.3em;
+    font-size: 1.7em;
+    font-weight: bold;
+  }
+
+  .formulario {
+    width: 65%;
+    max-width: 1100px;
+    height: 50vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    grid-template-areas: "img form";
+  }
+
+
+  .formulario img {
+    width: 100%;
+    max-width: 440px;
+    grid-area: img;
+    justify-self: right;
+    margin: 0;
+  }
+
+  form {
+    justify-self: center;
+    grid-area: form;
+  }
+
+  input {
+    min-width: 240px;
+  }
+
+  input:focus {
+    outline: 2px solid #4050b4;
+    border-radius: .3rem;
+  }
+
+  .botaoEntrar {
+    margin-top: 1.5em;
+    cursor: pointer;
+    transition: .3s;
+  }
+
+  .botaoEntrar:hover {
+    background: #4050b4;
+  }
+
+  .feedback_seg {
+    background-color: red ;
+    color:black;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: .01rem;
+    padding: 0.5rem;
+    border-radius: 1.3em;
+  }
+
+  .feedback_cadSucesso {
+    color:green;
+    text-align: center;
+    padding: 0.5rem;
+  }
+  
+  .feedback_cadErro {
+    color: red;
+    text-align: center;
+    padding: 0.5rem;
+  }
+
+}

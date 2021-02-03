@@ -1,0 +1,123 @@
+header {
+  display: flex;
+  margin: 0 auto;
+  color: #f5f5f5;
+}
+
+.headerContainer {
+  background: linear-gradient(249.52deg, #3AC1F0 0%, #4E54C8 100%);
+  width: 100%;
+  height: 90px;
+  margin: 0 auto;
+}
+
+.logoContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0em auto 2em;
+  padding: 2em 1em;
+  box-sizing: border-box;
+
+}
+
+.logoContainer img {
+  width: 52px;
+}
+
+.logoContainer span {
+  font-family: 'Kodchasan', sans-serif;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: .1em;
+  font-size: 2.5em;
+}
+
+.navBar {
+  display: flex;
+}
+
+.botaoInicio {
+  display: none;
+}
+
+.iconeVoltar{
+  position: absolute;
+  display: flex;
+  align-items: center;
+  top: 110px;
+  right: 20px;
+}
+
+.iconeVoltar {
+  padding: .3em .9em;
+  border-radius: .3em;
+  background: #3AC1F0;
+}
+
+.iconeVoltar a {
+  height: 24px;
+}
+
+.iconeVoltar:active {
+  background: #4E54C8;
+}
+
+
+
+@media (min-width: 940px) {
+  header {
+    background: linear-gradient(249.52deg, #3AC1F0 0%, #4E54C8 100%);
+    margin: 0 auto;
+    height: 80px;
+  }
+
+  .headerContainer {
+    background: none;
+    display: flex;
+    width: 65%;
+    margin: 0 auto;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logoContainer {
+    margin: auto 0;
+    padding: 0;
+  }
+
+  .logoContainer img {
+    width: 60px;
+  }
+
+  .logoContainer span {
+    font-size: 2.5rem;
+  }
+
+  .botaoInicio {
+    width: 160px;
+    height: 40px;
+    display: initial;
+    border: 3px solid #f5f5f5;
+    padding: .47em 1.5em;
+    border-radius: 5px;
+    font-size: 1.4rem;
+    line-height: 1.4rem;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    font-weight: bold;
+    transition: .3s;
+    box-sizing: border-box;
+  }
+
+  .botaoInicio:hover {
+    color: #f5f5f5;
+    background: #1d238b;
+    border: 3px solid transparent;
+  }
+
+  .iconeVoltar {
+    display: none;
+  }
+}

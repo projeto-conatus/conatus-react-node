@@ -1,0 +1,96 @@
+body {
+  color: #f5f5f5;
+  font-family: "Nunito", sans-serif;
+}
+
+.homePage {
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(249.52deg, #3ac1f0 0%, #4e54c8 100%);
+}
+
+.slogan {
+  margin-top: 5rem;
+  font-size: 2.2em;
+  text-align: center;
+  letter-spacing: 0.03em;
+}
+
+.arteHomePageDesktop {
+  display: none;
+}
+
+.botaoEntrar {
+  border: 3px solid #f5f5f5;
+  display: flex;
+  margin: 18% auto 0;
+  justify-content: center;
+  width: 160px;
+  font-size: 24px;
+  padding: 5px 8px;
+  border-radius: 5px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.botaoEntrar:active {
+  background: #1d238b;
+  border: 3px solid #1d238b;
+}
+
+@media (min-width: 940px) {
+  .mainHomePage {
+    width: 65%;
+    height: 45vh;
+    padding-left: 0.1em;
+    margin: 7em auto 0;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr;
+    box-sizing: border-box;
+    grid-template-areas:
+      "text img"
+      ". img"
+      "bt img";
+  }
+
+  .mainHomePage .slogan {
+    font-size: clamp(40px, 3.1rem, 4.5vw);
+    text-align: left;
+    margin: 0;
+    line-height: 1.1;
+    grid-area: text;
+    align-self: center;
+    padding-bottom: .5rem;
+  }
+
+  .mainHomePage .arteHomePageDesktop {
+    width: 95%;
+    min-width: 390px;
+    display: initial;
+    grid-area: img;
+    align-self: flex-end;
+  }
+
+  .mainHomePage .botaoEntrar {
+    grid-area: bt;
+    align-self: flex-end;
+    width: 190px;
+    height: 50px;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    transition: 0.3s;
+  }
+
+  .botaoEntrar:hover {
+    background: #1d238b;
+    border: 3px solid transparent;
+  }
+
+}
+
+@media (min-width: 1280px) {
+  
+}

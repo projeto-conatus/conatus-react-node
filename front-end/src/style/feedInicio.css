@@ -1,0 +1,224 @@
+@import url("https://fonts.googleapis.com/css2?family=Kodchasan:wght@400;700&family=Nunito:wght@300;400;600;700&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(
+    249.52deg,
+    #3ac1f0 0%,
+    #4e54c8 100%
+  );
+  min-height: 100vh;
+  position: relative;
+}
+
+.titulo {
+  color: #f5f5f5;
+  font-family: 'Kodchasan', sans-serif;
+  font-size: 1.4rem;
+  text-align: left;
+  margin-left: 7.5%;
+}
+
+.conteudoPrincipal {
+  display: flex;
+  flex-direction: column;
+  width: 85%;
+  margin: 2rem auto;
+}
+
+.conteudoPrincipal h1, h3 {
+  text-align: center;
+  font-family: "nunito", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+}
+
+.conteudoPrincipal h1 {
+  font-size: 29px;
+  font-weight: bold;
+}
+
+.conteudoPrincipal h3 {
+  font-size: 17px;
+  font-weight: normal;
+  letter-spacing: 0.05em;
+  color: #3a3a3a;
+}
+
+hr {
+  width: 65%;
+  margin: 1em auto;
+  color: #e0e0e0;
+  border: 2px solid #e0e0e0;
+}
+
+.conteudoPrincipal p {
+  width: 95%;
+  margin: 0 auto;
+  font-size: 15px;
+  font-family: "nunito", sans-serif;
+  color: #3a3a3a;
+  text-indent: 10px;
+}
+
+section {
+  background: #f5f5f5;
+  border-radius: 10px;
+  margin: 1rem auto;
+  width: 100%;
+  box-shadow: inset 0px -4px 10px rgba(0, 0, 0, 0.25);
+  
+}
+
+@-moz-document url-prefix('') {
+  section {
+    scrollbar-color: #c4c4c4 #f5f5f5;
+    scroll-width: thick;
+  }
+}
+
+.capa {
+  background: linear-gradient(
+    249.52deg,
+   #3ac1f0 0%,
+   #4e54c8 100%
+);
+  width: 90%;
+  margin: 1rem auto;
+  border-radius: 10px;
+  display: flex;
+}
+
+.capa img {
+  margin: auto;
+  height: 160px;
+}
+
+.artigos {
+  height: 625px;
+  overflow: auto;
+}
+
+.listaArtigos,
+.publi,
+.novidades {
+  height: 300px;
+  overflow: auto;
+}
+
+.publi h3,
+.novidades h3,
+.listaArtigos h3 {
+  color: #3a3a3a;
+  font-weight: bold;
+  margin: 1rem auto;
+  /* font-family: 'nunito', sans-serif; */
+}
+
+.listaArtigos {
+  text-align: center;
+}
+
+.listaArtigos ul li {
+  list-style: none;
+  margin: .5rem 0;
+}
+
+.listaArtigos ul li a {
+  text-decoration: none;
+  color: #3a3a3a;
+  font-size: 1.1rem;
+  letter-spacing: .02rem;
+}
+
+section::-webkit-scrollbar {
+  width: 14px;
+}
+
+section::-webkit-scrollbar-thumb {
+  background: #c4c4c4;
+  border-left: 4px solid #f5f5f5;
+  border-right: 4px solid #f5f5f5;
+}
+
+section::-webkit-scrollbar-track {
+  margin: 1rem;
+  background: #f5f5f5;
+}
+
+
+
+@media (min-width: 940px) {
+  .titulo {
+    display: inline-block;
+    text-align: center;
+    font-size: 2.5rem;
+    margin: 2rem 0 1% 50%;
+  }
+
+  .conteudoPrincipal {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 75% 25%;
+    grid-template-rows: repeat(3, 33%);
+    grid-template-areas:
+      "artigos art"
+      "artigos publi"
+      "artigos novi";
+      grid-column-gap: 3rem;
+      grid-row-gap: .5rem;
+    width: 75%;
+    margin-top: 0;
+    margin-left: 18%;
+  }
+
+  section {
+    margin: 0;
+  }
+
+  .artigos {
+    overflow: auto;
+    grid-area: artigos;
+    min-height: 80vh;
+  }
+
+  .artigos .capa {
+    width: 460px;
+    height: 220px;
+  }
+
+  .artigos p {
+    width: 80%;
+    font-size: 1.2rem;
+  }
+  
+  .listaArtigos,
+  .publi,
+  .novidades {
+    min-height: 25.7vh;
+    width: 80%;
+  }
+
+  .listaArtigos {
+    overflow: auto;
+    height: 200px;
+    grid-area: art;
+  }
+
+  .publi {
+    overflow: auto;
+    height: 200px;
+    grid-area: publi;
+  }
+
+  .novidades {
+    overflow: auto;
+    height: 200px;
+    grid-area: novi;
+  }
+}
