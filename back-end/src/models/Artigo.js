@@ -10,9 +10,9 @@ class Artigo {
     this.texto;
     this.imagem;
   }
-  //OBS: descobrir o porquê não é interessante passar req,res aqui
+
   selectAll(req, res) {
-    db.query("SELECT * FROM artigo", (error, result) => {
+    db.query("SELECT a.titulo, a.subtitulo, a.texto, a.imagem, c.nome, a.imagem FROM autores AS c INNER JOIN artigo AS a ON c.idAutor = a.autor", (error, result) => {
       error ? res.send(error) : res.json(result);
     });
   }

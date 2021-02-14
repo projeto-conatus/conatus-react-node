@@ -4,10 +4,9 @@
 const artigo = require('../models/Artigo')
 
 class ArtigosController {
-  //Teoricamente, em classes possúimos
-  //métodos, mas em controllers chamamos de Actions.
+  //Teoricamente, em classes possúimos métodos, mas em controllers chamamos de Actions.
   selectArtigoAction(req, res) {
-    //OBS: descobrir o porquê não é interessante passar req,res aqui
+
     artigo.selectAll(req, res)
   }
 
