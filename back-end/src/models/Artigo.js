@@ -44,17 +44,16 @@ class Artigo {
     );
   }
 
-  editaArtigo(req, res) {
+  updateArtigo(req, res) {
     db.query(
-      `UPDATE artigo SET titulo = '${this.titulo}', subtitulo = '${this.subtitulo}', autor = '${this.autor}', 
-      texto = '${this.texto}', imagem = '${this.imagem}' WHERE id = '${this.id}'`,
+      `UPDATE artigo SET titulo = '${this.titulo}', subtitulo = '${this.subtitulo}', autor = '${this.autor}', texto = '${this.texto}', imagem = '${this.imagem}' WHERE id = '${this.id}'`, 
       (error, result) => {
         error ? res.send(error) : res.status(200).send("Artigo atualizado!");
       }
     );
   }
 
-  deletarArtigo(req, res) {
+  deleteArtigo(req, res) {
     db.query(
       `DELETE FROM artigo WHERE id = '${this.id}'`,
       (error, result) => {

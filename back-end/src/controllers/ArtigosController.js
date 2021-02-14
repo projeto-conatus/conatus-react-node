@@ -25,6 +25,23 @@ class ArtigosController {
     artigo.insertArtigo(req, res)
   }
 
+  selectArtigoIdAction(req, res) {
+    const { id } = req.params;
+
+    artigo.selectPorId(req, res)
+  }
+
+  updateArtigoAction(req, res) {
+    const { id } = req.params;
+
+    artigo.updateArtigo(req, res)
+  }
+
+  deleteArtigoAction(req, res) {
+    const { id } = req.params;
+
+    artigo.deleteArtigo(req, res)
+  } 
 
 }
 
