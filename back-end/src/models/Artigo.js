@@ -22,7 +22,7 @@ class Artigo {
     db.query(
       `INSERT INTO artigo (titulo, subtitulo, autor, texto, imagem) VALUES ('${this.titulo}', '${this.subtitulo}', '${this.autor}', '${this.texto}', '${this.imagem}')`,
       (error, result) => {
-        error ? res.send(error) : res.status(201).send("Artigo cadastrada")
+        error ? res.send(error) : res.status(201).send("Artigo cadastrado!")
       }
     );
   }
