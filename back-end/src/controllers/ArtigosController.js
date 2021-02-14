@@ -13,6 +13,8 @@ class ArtigosController {
   insertArtigoAction(req, res) {
     const { titulo, subtitulo, autor, texto, imagem } = req.body;
 
+    //esse autor que recebemos no formulário é o codigo do autor
+    //no select que será feito o inner join com a tabela de autor para retornar nome do autor
     artigo.titulo = titulo
     artigo.subtitulo = subtitulo
     artigo.autor = autor
