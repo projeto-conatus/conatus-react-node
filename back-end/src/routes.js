@@ -8,9 +8,9 @@ const ArtigosController = require('./controllers/ArtigosController')
 const routes = new Router
 
 //Artigos
-routes.get("/selectArtigo", ArtigosController.selectArtigoAction) 
-routes.post("/insertArtigo", ArtigosController.insertArtigoAction) 
-routes.get("/selectPorIdArtigo", ArtigosController.selectPorIdAction)
+routes.get("/selectArtigo", ArtigosController.selectArtigoAction) //página do feed
+routes.post("/insertArtigo", ArtigosController.insertArtigoAction) //cadastrar novo artigo
+
 
 //Colaboradores
 
