@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Tempo de geração: 20/01/2021 às 13:07
--- Versão do servidor: 8.0.22-0ubuntu0.20.04.3
+-- Tempo de geração: 14/02/2021 às 13:32
+-- Versão do servidor: 8.0.23-0ubuntu0.20.04.1
 -- Versão do PHP: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -43,10 +43,9 @@ CREATE TABLE `artigo` (
 --
 
 INSERT INTO `artigo` (`id`, `titulo`, `subtitulo`, `texto`, `imagem`, `data`, `autor`) VALUES
-(1, 'Teste Titulo novo', 'novo sub', 'Olá, tudo bem? oi de novo', 'fotonova.jpeg', '2021-01-16 14:45:51', NULL),
-(4, 'oioi', 'teste', 'wwewewew.\r\nidiijdijiw.\r\nswswsw', 'novafoto.png', '2021-01-16 18:31:38', NULL),
 (6, 'teste', 'teste', ' teste', 'teste.png', '2021-01-20 00:00:00', 'A001'),
-(7, 'Com join', 'Pós join', 'testando o join', 'fotonova.jpeg', '2021-01-20 12:22:04', 'A001');
+(7, 'Com join', 'Pós join', 'testando o join', 'fotonova.jpeg', '2021-01-20 12:22:04', 'A001'),
+(8, 'testando refatoração', 'teste no insomnia', 'texto teste refatoração e insomnia', 'teste.png', '2021-02-14 12:57:59', 'A001');
 
 -- --------------------------------------------------------
 
@@ -93,6 +92,63 @@ INSERT INTO `colaborador` (`idColaborador`, `nome`, `senha`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estrutura para tabela `mentor`
+--
+
+CREATE TABLE `mentor` (
+  `idMentor` int NOT NULL,
+  `nome` varchar(50) DEFAULT NULL,
+  `cargoAtual` varchar(45) DEFAULT NULL,
+  `formacao` varchar(45) DEFAULT NULL,
+  `descricao` longtext,
+  `linkedin` varchar(45) DEFAULT NULL,
+  `email` varchar(45) DEFAULT NULL,
+  `foto` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `nivelescolaridade`
+--
+
+CREATE TABLE `nivelescolaridade` (
+  `idEscolaridade` int NOT NULL,
+  `escolaridade` varchar(20) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Despejando dados para a tabela `nivelescolaridade`
+--
+
+INSERT INTO `nivelescolaridade` (`idEscolaridade`, `escolaridade`) VALUES
+(1, 'Ensino Fundamental'),
+(2, 'Ensino Médio'),
+(3, 'Ensino Superior');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `tipoescola`
+--
+
+CREATE TABLE `tipoescola` (
+  `idEscola` int NOT NULL,
+  `escola` varchar(25) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Despejando dados para a tabela `tipoescola`
+--
+
+INSERT INTO `tipoescola` (`idEscola`, `escola`) VALUES
+(1, 'Pública - Rede Municipal'),
+(2, 'Pública - Rede Federal'),
+(3, 'Pública - Rede Estadual');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura para tabela `usuario`
 --
 
@@ -100,21 +156,28 @@ CREATE TABLE `usuario` (
   `idUsuario` int NOT NULL,
   `nome` varchar(100) NOT NULL,
   `sobrenome` varchar(100) NOT NULL,
-  `cpf` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `cpf` varchar(100) NOT NULL,
   `dataNascimento` varchar(10) NOT NULL,
-  `escolaridade` varchar(50) DEFAULT NULL,
-  `tipoEscola` varchar(50) DEFAULT NULL,
+  `escolaridade` int DEFAULT NULL,
+  `tipoEscola` int DEFAULT NULL,
   `email` varchar(50) NOT NULL,
   `senha` varchar(50) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
 
 --
--- Despejando dados para a tabela `usuario`
+-- Estrutura para tabela `vaga`
 --
 
-INSERT INTO `usuario` (`idUsuario`, `nome`, `sobrenome`, `cpf`, `dataNascimento`, `escolaridade`, `tipoEscola`, `email`, `senha`) VALUES
-(7, 'kadu', 'duka', '432f45b44c432414d2f97df0e5743818', '2012-02-08', 'sexologia aplicada', 'universidade', 'c@c', 'e10adc3949ba59abbe56e057f20f883e'),
-(8, 'Ana', 'Souza', 'bfd81ee3ed27ad31c95ca75e21365973', '2000-02-01', 'Ensino Médio', 'Publica', 'ana@souza.com', 'e10adc3949ba59abbe56e057f20f883e');
+CREATE TABLE `vaga` (
+  `idVaga` int NOT NULL,
+  `cargo` varchar(45) DEFAULT NULL,
+  `empresa` varchar(45) DEFAULT NULL,
+  `descricao` longtext,
+  `contato` varchar(45) DEFAULT NULL,
+  `dataCadastro` datetime DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Índices de tabelas apagadas
@@ -140,13 +203,39 @@ ALTER TABLE `colaborador`
   ADD PRIMARY KEY (`idColaborador`);
 
 --
+-- Índices de tabela `mentor`
+--
+ALTER TABLE `mentor`
+  ADD PRIMARY KEY (`idMentor`);
+
+--
+-- Índices de tabela `nivelescolaridade`
+--
+ALTER TABLE `nivelescolaridade`
+  ADD PRIMARY KEY (`idEscolaridade`);
+
+--
+-- Índices de tabela `tipoescola`
+--
+ALTER TABLE `tipoescola`
+  ADD PRIMARY KEY (`idEscola`);
+
+--
 -- Índices de tabela `usuario`
 --
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`idUsuario`),
   ADD UNIQUE KEY `id_Usuario` (`idUsuario`),
   ADD UNIQUE KEY `cpf` (`cpf`),
-  ADD UNIQUE KEY `email` (`email`);
+  ADD UNIQUE KEY `email` (`email`),
+  ADD KEY `escolaridade_idx` (`escolaridade`),
+  ADD KEY `escola_idx` (`tipoEscola`);
+
+--
+-- Índices de tabela `vaga`
+--
+ALTER TABLE `vaga`
+  ADD PRIMARY KEY (`idVaga`);
 
 --
 -- AUTO_INCREMENT de tabelas apagadas
@@ -156,13 +245,25 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de tabela `artigo`
 --
 ALTER TABLE `artigo`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT de tabela `mentor`
+--
+ALTER TABLE `mentor`
+  MODIFY `idMentor` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `idUsuario` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `idUsuario` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT de tabela `vaga`
+--
+ALTER TABLE `vaga`
+  MODIFY `idVaga` int NOT NULL AUTO_INCREMENT;
 
 --
 -- Restrições para dumps de tabelas
