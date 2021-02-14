@@ -12,7 +12,7 @@ class Artigo {
     this.imagem;
   }
 
-  //esse é o que retorna no feed
+  
   selectAll(req, res) {
     db.query(
       "SELECT * FROM autores AS c INNER JOIN artigo AS a ON c.idAutor = a.autor", 
