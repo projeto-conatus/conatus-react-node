@@ -1,4 +1,5 @@
 // criando servidor express
+//nesse arquivo fica as configurações do aplicativo
 
 const express = require('express')
 const cors = require('cors')

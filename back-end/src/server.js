@@ -1,3 +1,5 @@
+//Neste arquivo ficam as configurações do servidor
+
 const app = require('./app')
 
 //startando e ouvindo a porta 
