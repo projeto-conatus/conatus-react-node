@@ -19,6 +19,8 @@ class Artigo {
 
   insertArtigo(req, res) {
 
+    //esse autor que recebemos no formulário é o codigo do autor
+    //no select que será feito o inner join com a tabela de autor para retornar nome do autor
     db.query(
       `INSERT INTO artigo (titulo, subtitulo, autor, texto, imagem) VALUES ('${this.titulo}', '${this.subtitulo}', '${this.autor}', '${this.texto}', '${this.imagem}')`,
       (error, result) => {
