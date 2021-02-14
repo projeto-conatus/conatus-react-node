@@ -4,6 +4,7 @@ const { Router } = require('express')
 
 //controllers
 const ArtigosController = require('./controllers/ArtigosController')
+const MentoresController = require('./controllers/MentoresController')
 
 const routes = new Router
 
@@ -19,6 +20,8 @@ routes.delete("/deleteArtigo/:id", ArtigosController.deleteArtigoAction)
 //Colaboradores
 
 //Mentores
+routes.get("/selectMentores", MentoresController.selectMentorAction)
+
 
 //Usuarios
 

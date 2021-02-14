@@ -33,6 +33,13 @@ class ArtigosController {
 
   updateArtigoAction(req, res) {
     const { id } = req.params;
+    const { titulo, subtitulo, autor, texto, imagem } = req.body;
+
+    artigo.titulo = titulo
+    artigo.subtitulo = subtitulo
+    artigo.autor = autor
+    artigo.texto = texto
+    artigo.imagem = imagem
 
     artigo.updateArtigo(req, res)
   }

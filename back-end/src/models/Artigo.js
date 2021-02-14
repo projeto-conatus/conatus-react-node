@@ -7,9 +7,9 @@ class Artigo {
     this.id;
     this.titulo;
     this.subtitulo;
-    this.autor;
     this.texto;
     this.imagem;
+    this.autor;
   }
 
   
