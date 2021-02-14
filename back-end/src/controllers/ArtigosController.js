@@ -1,3 +1,6 @@
+//Precisamos ter uma action para selecionar, inserir, deletar e editar
+
+
 const artigo = require('../models/Artigo')
 
 class ArtigosController {

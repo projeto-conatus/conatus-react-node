@@ -1,3 +1,5 @@
+//Query para selecionar, inserir, deletar e update
+
 const db = require("../config/connection");
 
 class Artigo {
