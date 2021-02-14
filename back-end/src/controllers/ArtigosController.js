@@ -24,6 +24,15 @@ class ArtigosController {
     artigo.insertArtigo(req, res)
   }
 
+  selectPorIdAction(req, res) {
+
+    const { id } = req.body;
+
+    artigo.id = id
+
+    artigo.selectPorId(req, res)
+  }
+
 }
 
 //vamos exportar instanciando já a classe, pois ao importar, não precisamos instanciar a todo momento.
