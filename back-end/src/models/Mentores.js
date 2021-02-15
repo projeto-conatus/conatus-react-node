@@ -15,12 +15,12 @@ class Mentores {
     }
 
     selectAll(req, res) {
-        db.query(
-          "SELECT * FROM mentor", 
-          (error, result) => {
-            error ? res.send(error) : res.json(result);
-          }
-        );
+      db.query(
+        "SELECT * FROM mentor", 
+        (error, result) => {
+          error ? res.send(error) : res.json(result);
+        }
+      );
     }
 
 }

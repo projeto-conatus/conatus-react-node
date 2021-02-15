@@ -28,6 +28,8 @@ class ArtigosController {
   selectArtigoIdAction(req, res) {
     const { id } = req.params;
 
+    artigo.id = id 
+
     artigo.selectPorId(req, res)
   }
 
@@ -35,6 +37,7 @@ class ArtigosController {
     const { id } = req.params;
     const { titulo, subtitulo, autor, texto, imagem } = req.body;
 
+    artigo.id = id
     artigo.titulo = titulo
     artigo.subtitulo = subtitulo
     artigo.autor = autor
@@ -46,6 +49,8 @@ class ArtigosController {
 
   deleteArtigoAction(req, res) {
     const { id } = req.params;
+
+    artigo.id = id
 
     artigo.deleteArtigo(req, res)
   } 

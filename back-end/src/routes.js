@@ -5,6 +5,8 @@ const { Router } = require('express')
 //controllers
 const ArtigosController = require('./controllers/ArtigosController')
 const MentoresController = require('./controllers/MentoresController')
+const VagasController = require('./controllers/VagasController')
+
 
 const routes = new Router
 
@@ -15,9 +17,8 @@ routes.get("/selectArtigoId/:id", ArtigosController.selectArtigoIdAction) //reto
 routes.put("/updateArtigo/:id", ArtigosController.updateArtigoAction)
 routes.delete("/deleteArtigo/:id", ArtigosController.deleteArtigoAction)
 
-
-
 //Colaboradores
+
 
 //Mentores
 routes.get("/selectMentores", MentoresController.selectMentorAction)
@@ -25,7 +26,10 @@ routes.get("/selectMentores", MentoresController.selectMentorAction)
 
 //Usuarios
 
+
 //Vagas
+routes.get("/selectVagas", VagasController.selectVagaAction )
+
 
 
 module. exports = routes
