@@ -58,7 +58,8 @@ input {
   height: 36px;
 }
 
-.botaoEntrar {
+.botaoEntrar2 {
+  width: 100%;
   background-color: #4D57C9 ;
   color: #E5E5E5;
   text-transform: uppercase;
@@ -142,13 +143,14 @@ input {
     border-radius: .3rem;
   }
 
-  .botaoEntrar {
+  .botaoEntrar2 {
+    width: initial;
     margin-top: 1.5em;
     cursor: pointer;
     transition: .3s;
   }
 
-  .botaoEntrar:hover {
+  .botaoEntrar2:hover {
     background: #4050b4;
   }
 

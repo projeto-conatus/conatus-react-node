@@ -1,17 +1,17 @@
-header {
+.header2 {
   display: flex;
   margin: 0 auto;
   color: #f5f5f5;
 }
 
-.headerContainer {
+.headerContainer2 {
   background: linear-gradient(249.52deg, #3AC1F0 0%, #4E54C8 100%);
   width: 100%;
   height: 90px;
   margin: 0 auto;
 }
 
-.logoContainer {
+.logoContainer2 {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,11 +21,11 @@ header {
 
 }
 
-.logoContainer img {
+.logoContainer2 img {
   width: 52px;
 }
 
-.logoContainer span {
+.logoContainer2 span {
   font-family: 'Kodchasan', sans-serif;
   text-transform: uppercase;
   font-weight: bold;
@@ -66,13 +66,13 @@ header {
 
 
 @media (min-width: 940px) {
-  header {
+  .header2 {
     background: linear-gradient(249.52deg, #3AC1F0 0%, #4E54C8 100%);
     margin: 0 auto;
     height: 80px;
   }
 
-  .headerContainer {
+  .headerContainer2 {
     background: none;
     display: flex;
     width: 65%;
@@ -81,16 +81,16 @@ header {
     align-items: center;
   }
 
-  .logoContainer {
+  .logoContainer2 {
     margin: auto 0;
     padding: 0;
   }
 
-  .logoContainer img {
+  .logoContainer2 img {
     width: 60px;
   }
 
-  .logoContainer span {
+  .logoContainer2 span {
     font-size: 2.5rem;
   }
 
@@ -102,7 +102,7 @@ header {
     padding: .47em 1.5em;
     border-radius: 5px;
     font-size: 1.4rem;
-    line-height: 1.4rem;
+    line-height: 1rem;
     text-align: center;
     text-transform: uppercase;
     letter-spacing: .1em;

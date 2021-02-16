@@ -1,33 +1,16 @@
-@import url("https://fonts.googleapis.com/css2?family=Kodchasan:wght@400;700&family=Nunito:wght@300;400;600;700&display=swap");
-
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-body {
-  background: linear-gradient(
-    249.52deg,
-    #3ac1f0 0%,
-    #4e54c8 100%
-  );
-  min-height: 100vh;
-  position: relative;
-}
-
 .titulo {
   color: #f5f5f5;
   font-family: 'Kodchasan', sans-serif;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
+  font-weight: bold;
   text-align: left;
-  margin-left: 7.5%;
+  margin: 0 0 0 7.5% !important;
 }
 
 .conteudoPrincipal {
   display: flex;
   flex-direction: column;
-  width: 85%;
+  width: 90%;
   margin: 2rem auto;
 }
 
@@ -39,7 +22,7 @@ body {
 }
 
 .conteudoPrincipal h1 {
-  font-size: 29px;
+  font-size: 1.2rem;
   font-weight: bold;
 }
 
@@ -59,7 +42,7 @@ hr {
 
 .conteudoPrincipal p {
   width: 95%;
-  margin: 0 auto;
+  margin: 0 auto .5rem;
   font-size: 15px;
   font-family: "nunito", sans-serif;
   color: #3a3a3a;
@@ -67,27 +50,20 @@ hr {
 }
 
 section {
-  background: #f5f5f5;
+  background: #e5e5e5;
   border-radius: 10px;
   margin: 1rem auto;
   width: 100%;
-  box-shadow: inset 0px -4px 10px rgba(0, 0, 0, 0.25);
   
 }
 
 @-moz-document url-prefix('') {
   section {
-    scrollbar-color: #c4c4c4 #f5f5f5;
-    scroll-width: thick;
+    scrollbar-color: #c4c4c4;
   }
 }
 
 .capa {
-  background: linear-gradient(
-    249.52deg,
-   #3ac1f0 0%,
-   #4e54c8 100%
-);
   width: 90%;
   margin: 1rem auto;
   border-radius: 10px;
@@ -99,9 +75,130 @@ section {
   height: 160px;
 }
 
+.autorArtigo {
+  text-align: center;
+}
+
 .artigos {
   height: 625px;
   overflow: auto;
+}
+
+.vagas {
+  height: 625px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.mentoria {
+  height: 625px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.vaga {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #4E54C8;
+  height: 240px;
+  width: 95%;
+  margin: 1rem 0;
+  border-radius: 5px;
+}
+
+.vaga h3 {
+  color: #f5f5f5;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+.vaga p {
+  text-align: center;
+  color: #e5e5e5;
+}
+
+.vaga a {
+  text-align: center;
+  font-size: 1.2rem;
+  line-height: 2;
+  font-weight: bold;
+  margin: 2rem 0 1rem;
+  width: 140px;
+  height: 40px;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: #F25F5C;
+  border-radius: 5px;
+  color: #f5f5f5;
+}
+
+.vaga a:active {
+  background: #3AC1F0;
+  color: #3a3a3a;
+}
+
+.mentores {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #3AC1F0;
+  height: 470px;
+  width: 95%;
+  margin: 1rem 0;
+  border-radius: 5px;
+}
+
+.mentores img {
+  margin: .5rem 0;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+}
+
+.mentores h3 {
+  color: #3a3a3a;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-top: .5rem;
+}
+
+.mentores p {
+  text-align: center;
+  color: #4a4a4a;
+}
+
+.mentores .descricao {
+  text-align: left;
+}
+
+.mentores a {
+  text-align: center;
+  font-size: 1.2rem;
+  line-height: 2;
+  font-weight: bold;
+  margin: 2rem 0 1rem;
+  width: 140px;
+  height: 40px;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: #4E54C8;
+  border-radius: 5px;
+  color: #f5f5f5;
+}
+
+.mentores a:active {
+  background: #3AC1F0;
+  color: #3a3a3a;
 }
 
 .listaArtigos,
@@ -117,7 +214,7 @@ section {
   color: #3a3a3a;
   font-weight: bold;
   margin: 1rem auto;
-  /* font-family: 'nunito', sans-serif; */
+  font-size: 1.2rem;
 }
 
 .listaArtigos {
@@ -142,49 +239,119 @@ section::-webkit-scrollbar {
 
 section::-webkit-scrollbar-thumb {
   background: #c4c4c4;
-  border-left: 4px solid #f5f5f5;
-  border-right: 4px solid #f5f5f5;
+  border-left: 4px solid #e5e5e5;
+  border-right: 4px solid #e5e5e5;
 }
 
 section::-webkit-scrollbar-track {
   margin: 1rem;
-  background: #f5f5f5;
 }
-
-
 
 @media (min-width: 940px) {
   .titulo {
+    color: #3a3a3a;
     display: inline-block;
     text-align: center;
-    font-size: 2.5rem;
-    margin: 2rem 0 1% 50%;
+    font-size: 1.7rem;
+    margin: 3.4rem 0 0 170px !important;
   }
 
   .conteudoPrincipal {
-    display: grid;
-    justify-content: center;
-    grid-template-columns: 75% 25%;
-    grid-template-rows: repeat(3, 33%);
-    grid-template-areas:
-      "artigos art"
-      "artigos publi"
-      "artigos novi";
-      grid-column-gap: 3rem;
-      grid-row-gap: .5rem;
-    width: 75%;
-    margin-top: 0;
-    margin-left: 18%;
+    position: absolute;
+    top: 70px;
+    left: 150px;
+    display: initial;
+    width: 71%;
+    max-width: 1380px;
+    height: 85.9vh;
+  }
+
+  .lateral {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 20%;
+    height: 100vh;
+    background: #e5e5e5;
   }
 
   section {
+    border-radius: 0;
     margin: 0;
   }
 
+  section::-webkit-scrollbar-thumb {
+    background: #c4c4c4;
+    border-left: 4px solid #f5f5f5;
+    border-right: 4px solid #f5f5f5;
+  }
+
+  .vagas {
+    flex-direction: row;
+    flex-wrap: wrap;
+    background: transparent;
+    justify-content: center;
+    align-items: baseline;
+    min-height: 85.9vh;
+    height: 80vh;
+    width: 95%;
+    max-width: 1380px;
+    margin: 0 !important;
+  }
+
+  .vaga {
+    width: 30%;
+    height: 300px;
+    min-width: 200px;
+    max-width: 330px;
+    margin: .5rem;
+    justify-content: space-around;
+  }
+
+  .vaga p {
+    font-size: 1.1rem;
+  }
+
+  .vaga a:hover {
+    background: #3AC1F0;
+    color: #3a3a3a;
+  }
+
+  .mentoria {
+    flex-direction: row;
+    flex-wrap: wrap;
+    background: transparent;
+    justify-content: center;
+    align-items: baseline;
+    min-height: 85.9vh;
+    height: 80vh;
+    width: 95%;
+    max-width: 1380px;
+    margin: 0 !important;
+  }
+
+  .mentores {
+    width: 30%;
+    min-width: 280px;
+    max-width: 320px;
+    margin: .5rem;
+    justify-content: space-around;
+  }
+
+  .mentores a:hover {
+    background: #F25F5C;
+    color: #f5f5f5;
+  }
+
   .artigos {
+    background: transparent;
     overflow: auto;
-    grid-area: artigos;
-    min-height: 80vh;
+    min-height: 85.9vh;
+    height: 80vh;
+    width:100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
   }
 
   .artigos .capa {
@@ -193,32 +360,39 @@ section::-webkit-scrollbar-track {
   }
 
   .artigos p {
-    width: 80%;
+    width: 75%;
     font-size: 1.2rem;
+    margin: 0 auto .7rem;
   }
-  
-  .listaArtigos,
-  .publi,
-  .novidades {
-    min-height: 25.7vh;
-    width: 80%;
-  }
+
+  .publi h3,
+.novidades h3,
+.listaArtigos h3 {
+  font-size: 1.2rem;
+}
 
   .listaArtigos {
     overflow: auto;
-    height: 200px;
-    grid-area: art;
+    height: 25%;
   }
 
   .publi {
     overflow: auto;
-    height: 200px;
-    grid-area: publi;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    align-items: center;
+  }
+
+  .publi img {
+    width: 60%;
+    min-width: 180px;
+    margin: .3rem auto;
   }
 
   .novidades {
     overflow: auto;
-    height: 200px;
-    grid-area: novi;
+    height: 25%;
   }
 }

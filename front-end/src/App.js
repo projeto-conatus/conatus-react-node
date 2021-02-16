@@ -1,11 +1,16 @@
 import React from 'react';
-import VLibras from './components/vlibras';
+import VLibras from './components/VLibras'
+import Rotas from './pages/Rotas';
+
+import { BrowserRouter } from 'react-router-dom'
 
 function App() {
   return (
     <div>
-     <h1>Conatus!</h1>
-     <VLibras />
+      <BrowserRouter>
+        <Rotas />
+      </BrowserRouter>
+      <VLibras />
     </div>
   );
 }

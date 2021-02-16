@@ -1,74 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Kodchasan:wght@400;700&family=Nunito:wght@300;400;600;700&display=swap');
 
-body {
-  width: 100%;
-  background: linear-gradient(249.52deg, #3AC1F0 0%, #4E54C8 100%);
-}
-
-header {
-  display: flex;
-  margin: 0 auto;
-  color: #f5f5f5;
-}
-
-.headerContainer {
-  width: 100%;
-  height: 90px;
-  margin: 0 auto;
-}
-
-.logoContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0em 0 2em;
-  padding: 2em 0 0;
-  box-sizing: border-box;
-
-}
-
-.logoContainer img {
-  width: 52px;
-}
-
-.logoContainer span {
-  font-family: 'Kodchasan', sans-serif;
-  text-transform: uppercase;
-  font-weight: bold;
-  letter-spacing: .05em;
-  font-size: 2.5em;
-}
-
-.navBar {
-  display: flex;
-}
-
-.botaoInicio {
-  display: none;
-}
-
-.iconeVoltar{
-  position: absolute;
-  display: flex;
-  align-items: center;
-  top: 120px;
-  right: 20px;
-}
-
-.iconeVoltar {
-  padding: .3em .9em;
-  border-radius: .3em;
-  background: #1d238b;
-}
-
-.iconeVoltar a {
-  height: 24px;
-}
-
-.iconeVoltar:active {
-  background: #4E54C8;
-}
-
 .tituloCadastro {
   text-align: center;
   margin-top: 20%;
@@ -77,12 +8,8 @@ header {
   letter-spacing: .1em;
 }
 
-h3, label {
-  color: #f5f5f5;
-}
-
 label {
-  font-size: 1.2em;
+  color: #222;
 }
 
 .enviar {
@@ -90,7 +17,6 @@ label {
   text-transform: uppercase;
   letter-spacing: .1em;
 }
-
 
 .modalAviso {
   position: fixed;
@@ -111,7 +37,7 @@ label {
 .modalConteudo {
   position: relative;
   width: 95%;
-  height: 400px;
+  height: 460px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -132,7 +58,8 @@ label {
 
 .modalConteudo p {
   text-indent: 5px;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
+  margin: 0;
 }
 
 .modalConteudo .botoesModal {
@@ -161,65 +88,10 @@ label {
   text-shadow: 0 1px 3px rgba(0, 0, 0, .5);
   letter-spacing: .05rem;
   border-radius: 5px;
+  width: 120px;
 }
 
 @media (min-width: 940px) {
-  body {
-    min-height: 100vh;
-  }
-
-  header {
-    margin: 0 auto;
-    padding: 2.5em 0;
-  }
-
-  .headerContainer {
-    display: flex;
-    width: 65%;
-    margin: 0 auto;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .logoContainer {
-    margin: auto 0;
-    padding: 0;
-  }
-
-  .logoContainer img {
-    width: 60px;
-  }
-
-  .logoContainer span {
-    font-size: 3rem;
-  }
-
-  .botaoInicio {
-    display: initial;
-    width: 160px;
-    height: 40px;
-    text-align: center;
-    border: 3px solid #f5f5f5;
-    box-sizing: border-box;
-    padding: .47em 1.5em;
-    border-radius: 5px;
-    font-size: 1.4rem;
-    line-height: 1.4rem;
-    text-transform: uppercase;
-    letter-spacing: .1em;
-    font-weight: bold;
-    transition: .3s;
-  }
-
-  .botaoInicio:hover {
-    color: #f5f5f5;
-    background: #1d238b;
-    border: 3px solid transparent;
-  }
-
-  .iconeVoltar {
-    display: none;
-  }
 
   .tituloCadastro {
     margin: 3em 0 1em;
@@ -232,8 +104,12 @@ label {
 
   .modalConteudo {
     width: 500px;
-    height: 350px;
+    height: 550px;
     justify-content: space-around;
+  }
+
+  .modalConteudo strong {
+    text-align: center;
   }
 
   .modalAviso h1 {
@@ -246,6 +122,7 @@ label {
     font-size: 1.2rem;
     margin: 0 auto;
   }
+
 
 
 }
