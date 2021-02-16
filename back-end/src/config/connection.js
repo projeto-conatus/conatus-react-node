@@ -4,8 +4,16 @@ const mysql = require('mysql')
 const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: '123',
+    password: '',
     database: 'conatus'
+})
+
+db.connect((error) => {
+    if(error){
+        console.log(error)
+    } else {
+        console.log("MySQL connected...")
+    }
 })
 
 module.exports = db

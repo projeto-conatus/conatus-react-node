@@ -4,6 +4,7 @@ const { Router } = require('express')
 
 //controllers
 const ArtigosController = require('./controllers/ArtigosController')
+const ColaboradorController = require('./controllers/ColaboradorController')
 const MentoresController = require('./controllers/MentoresController')
 const VagasController = require('./controllers/VagasController')
 
@@ -18,7 +19,7 @@ routes.put("/updateArtigo/:id", ArtigosController.updateArtigoAction)
 routes.delete("/deleteArtigo/:id", ArtigosController.deleteArtigoAction)
 
 //Colaboradores
-
+routes.post("/insertColaborador", ColaboradorController.insertColaboradorAction)
 
 //Mentores
 routes.get("/selectMentores", MentoresController.selectMentorAction)
