@@ -61,7 +61,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  animation: showMenu 0.3s;
+  animation: showMenu2 0.3s;
   z-index: 1000;
 }
 
@@ -85,7 +85,7 @@
   letter-spacing: 0.05rem;
 }
 
-@keyframes showMenu {
+@keyframes showMenu2 {
   from {
     opacity: 0;
     transform: translateX(60px);

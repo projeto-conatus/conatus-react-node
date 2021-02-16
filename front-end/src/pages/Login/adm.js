@@ -1,6 +1,8 @@
 import React from "react";
 import Header from "../../components/Header";
 
+import '../../style/estilologin.css'
+
 import arteLogin from "../../images/arte_loginAdm.svg";
 
 const LoginAdm = () => {
@@ -9,11 +11,11 @@ const LoginAdm = () => {
       <Header />
 
       <main>
-        <h4 class="tituloLogin">Login</h4>
+        <h4 className="tituloLogin">Login</h4>
 
-        <div class="formulario">
+        <div className="formulario">
           <form>
-            <label for="nome">Nome do usuário:</label>
+            <label for="nome">Usuário:</label>
             <input
               required
               type="text"
@@ -32,7 +34,7 @@ const LoginAdm = () => {
               title="Digite sua senha"
             />
             <button
-              class="botaoEntrar2"
+              className="botaoEntrar2"
               name="logar"
               type="submit"
               title="Clique após ter preenchido seus dados"
@@ -40,7 +42,7 @@ const LoginAdm = () => {
               <a href="area-adm">Entrar</a>
             </button>
             <a
-              class="esqueceuSenha"
+              className="esqueceuSenha"
               href="/"
               title="Clique aqui caso tenha esquecido sua senha"
             >

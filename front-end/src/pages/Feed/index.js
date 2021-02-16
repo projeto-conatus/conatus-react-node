@@ -8,6 +8,17 @@ import recode from "../../images/publi/recode.png";
 import TituloFeed from "../../components/TituloFeed";
 
 const Feed = () => {
+  const [artigo, setArtigo] = React.useState([])
+
+  React.useEffect(() => {
+    async function buscarArtigos() {
+      const req = await fetch('http://localhost:3011/selectartigo')
+      const res = await req.json()
+      setArtigo(res)
+    }
+    buscarArtigos()
+  }, [])
+
   return (
     <>
       <Menu />
@@ -15,26 +26,18 @@ const Feed = () => {
       <TituloFeed titulo="Início" />
 
       <main className="conteudoPrincipal">
-        <section className="artigos">
-          <img className="capa" src={instagram} alt=""/>
-          <h1>Título do artigo</h1>
-          <p className='autorArtigo'>Escrito por: $nome</p>
-          <hr/>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente fuga doloremque necessitatibus, commodi laboriosam tempora corporis blanditiis expedita ipsum explicabo incidunt magnam est at illo! Omnis error perferendis facere deserunt?
-          Tenetur adipisci ullam rem a reiciendis neque illo dignissimos sint non temporibus tempore quas aliquam consectetur quis illum vitae, maiores dolor deserunt impedit fugit blanditiis. Natus recusandae perferendis magnam voluptates?</p>
-
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente fuga doloremque necessitatibus, commodi laboriosam tempora corporis blanditiis expedita ipsum explicabo incidunt magnam est at illo! Omnis error perferendis facere deserunt?
-          Tenetur adipisci ullam rem a reiciendis neque illo dignissimos sint non temporibus tempore quas aliquam consectetur quis illum vitae, maiores dolor deserunt impedit fugit blanditiis. Natus recusandae perferendis magnam voluptates?</p>
-
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente fuga doloremque necessitatibus, commodi laboriosam tempora corporis blanditiis expedita ipsum explicabo incidunt magnam est at illo! Omnis error perferendis facere deserunt?
-          Tenetur adipisci ullam rem a reiciendis neque illo dignissimos sint non temporibus tempore quas aliquam consectetur quis illum vitae, maiores dolor deserunt impedit fugit blanditiis. Natus recusandae perferendis magnam voluptates?</p>
-
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente fuga doloremque necessitatibus, commodi laboriosam tempora corporis blanditiis expedita ipsum explicabo incidunt magnam est at illo! Omnis error perferendis facere deserunt?
-          Tenetur adipisci ullam rem a reiciendis neque illo dignissimos sint non temporibus tempore quas aliquam consectetur quis illum vitae, maiores dolor deserunt impedit fugit blanditiis. Natus recusandae perferendis magnam voluptates?</p>
-
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente fuga doloremque necessitatibus, commodi laboriosam tempora corporis blanditiis expedita ipsum explicabo incidunt magnam est at illo! Omnis error perferendis facere deserunt?
-          Tenetur adipisci ullam rem a reiciendis neque illo dignissimos sint non temporibus tempore quas aliquam consectetur quis illum vitae, maiores dolor deserunt impedit fugit blanditiis. Natus recusandae perferendis magnam voluptates?</p>
-        </section>
+        {artigo &&
+          artigo.map(({id, nome, titulo, subtitulo, texto, imagem }) => (
+              <section key={id} className="artigos">
+                <img className="capa" src={imagem} alt="capa do artigo"/>
+                <h1>{titulo}</h1>
+                <h3>{subtitulo}</h3>
+                <p className="autorArtigo">Escrito por: {nome}</p>
+                <hr/>
+                <p>{texto}</p>
+              </section>
+          ))
+        }
       </main>
 
         <div className="lateral">

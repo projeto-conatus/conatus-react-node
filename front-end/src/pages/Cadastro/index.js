@@ -5,6 +5,17 @@ import "../../style/cadastro.css";
 import Modal from "../../components/Modal";
 
 const Cadastro = () => {
+  // const [form, setForm] = React.useState({
+  //   nome: '',
+  //   sobrenome: '',
+  //   cpf: '',
+  //   dataNascimento: '',
+  //   escolaridade: '',
+  //   tipoEscola: '',
+  //   email: '',
+  //   senha: '',
+  // });
+
   return (
     <>
       <Header />
@@ -12,7 +23,7 @@ const Cadastro = () => {
 
       <div className="container">
         <div className="col-md-6 offset-md-3">
-          <form className="needs-validation" method="POST">
+          <form className="needs-validation">
             <div className="form-row">
               <div className="form-group col-md-6">
                 <label htmlFor="validationCustom01">Nome</label>
@@ -84,8 +95,12 @@ const Cadastro = () => {
                   className="form-control"
                   id="validationCustom12"
                   name="escolaridade"
+                  required
                 >
-                  <option>Selecione</option>
+                  <option disabled selected>Selecione</option>
+                  <option value="Ensino Fundamental">Ensino Fundamental</option>
+                  <option value="Ensino Médio">Ensino Médio</option>
+                  <option value="Ensino Superior">Ensino Superior</option>
                 </select>
                 <div className="invalid-feedback">
                   <p>Favor preencher este campo</p>
@@ -99,7 +114,10 @@ const Cadastro = () => {
                   id="validationCustom13"
                   name="tipoEscola"
                 >
-                  <option>Selecione</option>
+                  <option disabled selected>Selecione</option>
+                  <option value='Pública - Municipal'>Pública - Municipal</option>
+                  <option value="Pública - Estadual">Pública - Estadual</option>
+                  <option value="Pública - Federal">Pública - Federal</option>
                 </select>
                 <div className="invalid-feedback">
                   <p>Favor preencher este campo</p>
@@ -143,7 +161,6 @@ const Cadastro = () => {
             <button
               className="btn btn-primary btn-lg btn-block enviar"
               name="cadastrar"
-              type="submit"
             >
               Cadastrar
             </button>

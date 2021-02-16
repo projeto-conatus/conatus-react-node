@@ -9,6 +9,17 @@ import recode from "../../images/publi/recode.png";
 import "../../style/feedInicio.css";
 
 const Mentoria = () => {
+  const [mentores, setMentores] = React.useState([])
+
+  React.useEffect(() => {
+    async function buscarMentores() {
+      const req = await fetch('http://localhost:3011/selectmentores')
+      const res = await req.json()
+      setMentores(res)
+    }
+    buscarMentores()
+  }, [])
+
   return (
     < >
       <Menu />
@@ -16,53 +27,19 @@ const Mentoria = () => {
 
       <main className="conteudoPrincipal">
         <section className="mentoria">
-         <div className="mentores">
-           <img src="https://images.unsplash.com/photo-1526382925646-27b5eb86796e?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=800&q=80" alt=""/>
-            <h3>Mentora da Silva Sauro</h3>
-            <p>Cargo</p>
-            <p className="descricao">Descrição Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt, voluptate sint mollitia omnis earum velit placeat dicta error architecto molestiae labore, tempora explicabo commodi! Debitis ab voluptatibus corporis laboriosam ipsam?</p>
-            <a href="##" target="_blank">Saiba Mais</a>
-         </div>
+          {mentores &&
+            mentores.map(({idMentor, nome, cargoAtual, formacao, linkedin, descricao, foto}) => (
+              <div key={idMentor} className="mentores">
+                <img src={foto} alt="foto"/>
+                <h3>{nome}</h3>
+                <p>{cargoAtual}</p>
+                <p>{formacao}</p>
+                <p>{descricao}</p>
+                <a href={linkedin} target="_blank" rel="noreferrer">Saiba mais</a>
+              </div>
+            ))
 
-         <div className="mentores">
-           <img src="https://images.unsplash.com/photo-1526382925646-27b5eb86796e?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=800&q=80" alt=""/>
-            <h3>Mentora da Silva Sauro</h3>
-            <p>Cargo</p>
-            <p className="descricao">Descrição Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt, voluptate sint mollitia omnis earum velit placeat dicta error architecto molestiae labore, tempora explicabo commodi! Debitis ab voluptatibus corporis laboriosam ipsam?</p>
-            <a href="##" target="_blank">Saiba Mais</a>
-         </div>
-
-         <div className="mentores">
-           <img src="https://images.unsplash.com/photo-1526382925646-27b5eb86796e?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=800&q=80" alt=""/>
-            <h3>Mentora da Silva Sauro</h3>
-            <p>Cargo</p>
-            <p className="descricao">Descrição Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt, voluptate sint mollitia omnis earum velit placeat dicta error architecto molestiae labore, tempora explicabo commodi! Debitis ab voluptatibus corporis laboriosam ipsam?</p>
-            <a href="##" target="_blank">Saiba Mais</a>
-         </div>
-
-         <div className="mentores">
-           <img src="https://images.unsplash.com/photo-1526382925646-27b5eb86796e?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=800&q=80" alt=""/>
-            <h3>Mentora da Silva Sauro</h3>
-            <p>Cargo</p>
-            <p className="descricao">Descrição Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt, voluptate sint mollitia omnis earum velit placeat dicta error architecto molestiae labore, tempora explicabo commodi! Debitis ab voluptatibus corporis laboriosam ipsam?</p>
-            <a href="##" target="_blank">Saiba Mais</a>
-         </div>
-
-         <div className="mentores">
-           <img src="https://images.unsplash.com/photo-1526382925646-27b5eb86796e?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=800&q=80" alt=""/>
-            <h3>Mentora da Silva Sauro</h3>
-            <p>Cargo</p>
-            <p className="descricao">Descrição Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt, voluptate sint mollitia omnis earum velit placeat dicta error architecto molestiae labore, tempora explicabo commodi! Debitis ab voluptatibus corporis laboriosam ipsam?</p>
-            <a href="##" target="_blank">Saiba Mais</a>
-         </div>
-
-         <div className="mentores">
-           <img src="https://images.unsplash.com/photo-1526382925646-27b5eb86796e?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=800&q=80" alt=""/>
-            <h3>Mentora da Silva Sauro</h3>
-            <p>Cargo</p>
-            <p className="descricao">Descrição Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt, voluptate sint mollitia omnis earum velit placeat dicta error architecto molestiae labore, tempora explicabo commodi! Debitis ab voluptatibus corporis laboriosam ipsam?</p>
-            <a href="##" target="_blank">Saiba Mais</a>
-         </div>
+          }
 
         </section>
       </main>

@@ -8,6 +8,17 @@ import recode from "../../images/publi/recode.png";
 import "../../style/feedInicio.css";
 
 const Vagas = () => {
+  const [vaga, setVaga] = React.useState([])
+
+  React.useEffect(() => {
+    async function buscarVagas() {
+      const req = await fetch('http://localhost:3011/selectvagas')
+      const res = await req.json()
+      setVaga(res)
+    }
+    buscarVagas()
+  }, [])
+
   return (
     < >
       <Menu />
@@ -15,69 +26,17 @@ const Vagas = () => {
 
       <main className="conteudoPrincipal">
         <section className="vagas">
-         <div className="vaga">
-            <h3>Vaga de emprego para trabalhar</h3>
-            <p>Empresa</p>
-            <p>Localização</p>
-            <a href="##" target="_blank">Saiba Mais</a>
-         </div>
-
-         <div className="vaga">
-            <h3>Vaga de emprego para trabalhar</h3>
-            <p>Empresa</p>
-            <p>Localização</p>
-            <a href="##" target="_blank">Saiba Mais</a>
-         </div>
-
-         <div className="vaga">
-            <h3>Vaga de emprego para trabalhar</h3>
-            <p>Empresa</p>
-            <p>Localização</p>
-            <a href="##" target="_blank">Saiba Mais</a>
-         </div>
-
-         <div className="vaga">
-            <h3>Vaga de emprego para trabalhar</h3>
-            <p>Empresa</p>
-            <p>Localização</p>
-            <a href="##" target="_blank">Saiba Mais</a>
-         </div>
-
-         <div className="vaga">
-            <h3>Vaga de emprego para trabalhar</h3>
-            <p>Empresa</p>
-            <p>Localização</p>
-            <a href="##" target="_blank">Saiba Mais</a>
-         </div>
-
-         <div className="vaga">
-            <h3>Vaga de emprego para trabalhar</h3>
-            <p>Empresa</p>
-            <p>Localização</p>
-            <a href="##" target="_blank">Saiba Mais</a>
-         </div>
-
-         <div className="vaga">
-            <h3>Vaga de emprego para trabalhar</h3>
-            <p>Empresa</p>
-            <p>Localização</p>
-            <a href="##" target="_blank">Saiba Mais</a>
-         </div>
-
-         <div className="vaga">
-            <h3>Vaga de emprego para trabalhar</h3>
-            <p>Empresa</p>
-            <p>Localização</p>
-            <a href="##" target="_blank">Saiba Mais</a>
-         </div>
-
-         <div className="vaga">
-            <h3>Vaga de emprego para trabalhar</h3>
-            <p>Empresa</p>
-            <p>Localização</p>
-            <a href="##" target="_blank">Saiba Mais</a>
-         </div>
-
+          {vaga &&
+            vaga.map(({idVaga, cargo, descricao, empresa, contato}) => (
+              <div key={idVaga} className="vaga">
+                <h3>{cargo}</h3>
+                <p>{descricao}</p>
+                <p>{empresa}</p>
+                <p>Rio de Janeiro, RJ</p>
+                <a href={contato} target="_blank" rel="noreferrer">Saiba Mais</a>
+              </div>
+            ))
+          }
         </section>
       </main>
 
