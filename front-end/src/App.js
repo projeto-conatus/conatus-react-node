@@ -1,15 +1,16 @@
-import React, {useState, useEffect} from 'react';
-import VLibras from './components/vlibras';
+import React from 'react';
+import VLibras from './components/VLibras'
+import Rotas from './pages/Rotas';
 
-//permitir requisicoes de uma api, neste caso, do nosso back em node. 
-//SaberMais: https://blog.rocketseat.com.br/axios-um-cliente-http-full-stack/
-//import Axios from 'axios' 
+import { BrowserRouter } from 'react-router-dom'
 
 function App() {
 
     <div>
-     <h1>Conatus!</h1>
-     <VLibras />
+      <BrowserRouter>
+        <Rotas />
+      </BrowserRouter>
+      <VLibras />
     </div>
 
 }

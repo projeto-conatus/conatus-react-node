@@ -1,8 +1,8 @@
-header {
+.header {
   margin: 0 auto;
 }
 
-header p {
+.header p {
   text-align: center;
   margin-bottom: 1rem;
   text-transform: uppercase;
@@ -11,7 +11,7 @@ header p {
   font-size: .86rem;
 }
 
-header p i {
+.header p i {
   margin-right: .2rem;
 }
 
@@ -74,9 +74,8 @@ a {
 
 .itensMenu {
   z-index: 10;
-  visibility: hidden;
   position: absolute;
-  top: 175px;
+  top: 190px;
   left: 50%;
   transform: translate(-50%);
   background: #4e54c8f1;
@@ -94,6 +93,7 @@ a {
   font-weight: bold;
   letter-spacing: 0.05em;
   color: #f5f5f5;
+  animation: showMenu 0.7s;
 }
 
 .itensMenu li {
@@ -125,11 +125,6 @@ a {
   padding: 1rem ;
 }
 
-.menuVisivel {
-  visibility: initial;
-  animation: showMenu 0.7s;
-}
-
 .feedback_cadSucesso {
   color:green;
   text-align: center;
@@ -141,14 +136,14 @@ a {
 }
 
 @media (min-width: 940px) {
-  header {
+  .header {
     width: 100%;
     margin: 0 auto;
     padding: 3.5rem 0;
     box-sizing: border-box;
   }
 
-  header p {
+  .header p {
     margin: 0 ;
     position: absolute;
     right: 12rem;
@@ -158,6 +153,7 @@ a {
     position: relative;
     display: flex;
     width: 65%;
+    min-width: 690px;
     margin: 0 auto;
     justify-content: space-between;
     align-items: center;
@@ -179,7 +175,6 @@ a {
   .botaoMenu {
     width: 160px;
     height: 40px;
-    line-height: 40px;
     font-size: 1.4rem;
     cursor: pointer;
     outline: none;
@@ -199,6 +194,7 @@ a {
     left: initial;
     right: 0;
     transform: initial;
+    animation: showMenuDesktop .3s;
   }
 
   .itensMenu li a:hover {
@@ -212,10 +208,6 @@ a {
   .itensMenu .botaoAcessar:hover {
     color: #f5f5f5;
     background: #1d238b;
-  }
-  
-  .menuVisivel {
-    animation: showMenuDesktop .3s;
   }
 
   .feedback_cadSucesso {
