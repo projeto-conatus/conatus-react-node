@@ -56,6 +56,22 @@ class Colaboradores {
         }
     }
 
+    validaColaborador(req, res) {
+        db.query(
+            `SELECT * FROM colaborador WHERE nome = ('${this.nome}') AND senha = ('${this.senha}')`,
+          (error, result) => {
+            if(error){
+                res.send({error: error})
+            }
+            if(result.length > 0){
+                    res.send(result)
+                } else {
+                    res.send({message: "Nome e/ou senha incorretos!"})
+                }
+          }
+        )
+    }
+
 }
 
 module.exports = new Colaboradores;
