@@ -7,6 +7,7 @@ const ArtigosController = require('./controllers/ArtigosController')
 const ColaboradorController = require('./controllers/ColaboradorController')
 const MentoresController = require('./controllers/MentoresController')
 const VagasController = require('./controllers/VagasController')
+const UsuarioController = require('./controllers/UsuariosController')
 
 
 const routes = new Router
@@ -26,7 +27,7 @@ routes.get("/selectMentores", MentoresController.selectMentorAction)
 
 
 //Usuarios
-
+routes.post("/selectUsuarios", UsuarioController.selectUsuarioAction)
 
 //Vagas
 routes.get("/selectVagas", VagasController.selectVagaAction )
