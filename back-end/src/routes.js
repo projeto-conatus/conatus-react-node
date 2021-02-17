@@ -21,6 +21,7 @@ routes.delete("/deleteArtigo/:id", ArtigosController.deleteArtigoAction)
 
 //Colaboradores
 routes.post("/insertColaborador", ColaboradorController.insertColaboradorAction)
+routes.post("/validaColaborador", ColaboradorController.validaColaboradorAction)
 
 //Mentores
 routes.get("/selectMentores", MentoresController.selectMentorAction)
