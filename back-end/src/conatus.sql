@@ -33,7 +33,7 @@ CREATE TABLE `artigo` (
   `titulo` varchar(50) DEFAULT NULL,
   `subtitulo` varchar(50) DEFAULT NULL,
   `texto` longtext,
-  `imagem` varchar(100) DEFAULT NULL,
+  `imagem` varchar(300) DEFAULT NULL,
   `data` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `autor` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -104,7 +104,7 @@ CREATE TABLE `mentor` (
   `descricao` longtext,
   `linkedin` varchar(45) DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL,
-  `foto` varchar(100) DEFAULT NULL
+  `foto` varchar(300) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
