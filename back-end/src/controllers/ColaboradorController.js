@@ -16,6 +16,7 @@ class ColaboradorController{
 
       const senhaCriptografada = crypto.createHash("md5").update(senha).digest("hex");
 
+      
       colaborador.nome = nome;
       colaborador.senha = senhaCriptografada;
 

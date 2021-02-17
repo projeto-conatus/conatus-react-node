@@ -21,19 +21,6 @@ class Usuario {
     });
   }
 
-  //query para selecionar tipo de escola( publica estadual, publica federal) da tabela tipoescola
-  selectTipoEscola(req, res) {
-    db.query("SELECT * FROM tipoescola", (error, result) => {
-      error ? res.send(error) : res.json(result);
-    });
-  }
-
-  //query para selecionar tipo de escolaridade( fundamental, medio, superior ) da tabela nivelescolaridade
-  selectEscolaridade(req, res) {
-    db.query("SELECT * FROM nivelescolaridade", (error, result) => {
-      error ? res.send(error) : res.json(result);
-    });
-  }
 
   //query para inserir usuario no bd
   insertUsuario(req, res) {

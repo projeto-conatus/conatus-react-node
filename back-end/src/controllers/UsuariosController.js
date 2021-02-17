@@ -1,13 +1,14 @@
 //Precisamos ter uma action para validar login e para cadastrar.
 const usuario = require('../models/Usuario')
-
+const crypto = require('crypto');
 class UsuarioController {
  
   //Ação de selecionar todos os usuarios do banco
   selectUsuarioAction(req, res) {
-      const { email, senha} = req.body;
-      usuario.email = email
-      usuario.senha = senha
+    const { email, senha} = req.body;
+    usuario.email = email
+    //usuario.senha = senha
+    const senhaCriptografada = crypto.createHash("md5").update(senha).digest("hex");
 
     usuario.selectUsuario(req, res)
   }
@@ -22,20 +23,20 @@ class UsuarioController {
     const cpfValido = cpf.length >=11
 
     const validacoesUsuario = [
-        {
-            nome:'nome',
-            valido: nomeValido,
-            mensagem: 'Nome de usuário deve ter no mínimo 6 caracteres'
-        },
-        {
-            nome: 'senha',
-            valido: senhaValida,
-            mensagem: 'Senha deve ter no mínimo 6 caracteres'
-        },
-        {
-            nome: 'cpf',
-            valido: cpfValido,
-           mensagem: 'Cpf deve ter no mínimo 11 caracteres'
+      {
+        nome:'nome',
+        valido: nomeValido,
+        mensagem: 'Nome de usuário deve ter no mínimo 6 caracteres'
+      },
+      {
+        nome: 'senha',
+        valido: senhaValida,
+        mensagem: 'Senha deve ter no mínimo 6 caracteres'
+      },
+      {
+        nome: 'cpf',
+        valido: cpfValido,
+        mensagem: 'Cpf deve ter no mínimo 11 caracteres'
       }
     ]
 
@@ -43,18 +44,19 @@ class UsuarioController {
     const existemErros = erros.length
 
     if(existemErros){
-        res.status(400).json(erros)
+      res.status(400).json(erros)
     } else {
 
-    usuario.nome = nome
-    usuario.sobrenome = sobrenome
-    usuario.cpf = cpf
-    usuario.dataNascimento = dataNascimento
-    usuario.tipoEscola = tipoEscola
-    usuario.email = email
-    usuario.senha = senha
+      usuario.nome = nome
+      usuario.sobrenome = sobrenome
+      usuario.cpf = cpf
+      usuario.dataNascimento = dataNascimento
+      usuario.tipoEscola = tipoEscola
+      usuario.email = email
+      //usuario.senha = senha
+      const senhaCriptografada = crypto.createHash("md5").update(senha).digest("hex");
 
-    usuario.insertUsuario(req, res)
+      usuario.insertUsuario(req, res)
     }
   }
 

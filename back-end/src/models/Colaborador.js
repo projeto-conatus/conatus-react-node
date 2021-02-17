@@ -14,7 +14,14 @@ class Colaboradores {
         db.query(
             `SELECT * FROM colaborador WHERE nome = '${this.nome}'`,
             (error, result) => {
-                error ? res.send(error) : res.json(result);
+                if(error){
+                    res.send({error: error})
+                }
+                if(result.length > 0){
+                    res.send(result)
+                } else {
+                    res.send({message: "Usuário não cadastrado"})
+                }
             }
         );
     }
