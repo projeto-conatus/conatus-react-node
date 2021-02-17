@@ -25,12 +25,24 @@ const Cadastrar = () => {
       },
       body: JSON.stringify(form)
     }).then((res) => setSucesso(res))
+    
+    function handleReset() {
+      setForm({...form, 
+        titulo: '',
+        subtitulo: '',
+        autor: '',
+        texto: '',
+        imagem: '',
+      })
+    }
+    handleReset()
   }
 
   return (
     <>
       <div className="container">
         <div className="col-md-6 offset-md-3">
+        <h1>Cadastrar novo artigo</h1>
           <form onSubmit={handleSubmit}>
             <div className="form-row">
               <div className="form-group col-md-12">
@@ -93,13 +105,11 @@ const Cadastrar = () => {
 
                 <button
                   style={{margin: '1rem 0'}}
-                  name="btn_cadastrar"
                   className="btn btn-primary"
                 >
                   Cadastrar
                 </button>
                 {sucesso && sucesso.ok && <p className="p-3 text-white bg-success">Artigo cadastrado com sucesso!!</p>}
-                <hr/>
               </div>
             </div>
           </form>
