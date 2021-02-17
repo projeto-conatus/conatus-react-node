@@ -1,15 +1,20 @@
 //Precisamos ter uma action para validar login e para cadastrar.
-const usuario = require('../models/Usuario')
+const usuario = require('../models/Usuario');
+const crypto = require('crypto');
 
 class UsuarioController {
  
   //Ação de selecionar todos os usuarios do banco
-  selectUsuarioAction(req, res) {
-      const { email, senha} = req.body;
-      usuario.email = email
-      usuario.senha = senha
+  validaUsuarioAction(req, res) {
+      const { email, senha } = req.body;
 
-    usuario.selectUsuario(req, res)
+      const criptografia = crypto.createHash("md5").update(senha).digest("hex");
+
+      usuario.email = email
+      usuario.senha = criptografia;
+
+
+    usuario.validaUsuario(req, res)
   }
 
 
@@ -17,15 +22,17 @@ class UsuarioController {
   insertUsuarioAction(req, res) {
     const { nome, sobrenome, cpf, dataNascimento, tipoEscola, email, senha } = req.body;
 
-    const nomeValido = nome.length >=6 
+    const nomeValido = nome.length >=3 
     const senhaValida = senha.length >=6
     const cpfValido = cpf.length >=11
+
+    
 
     const validacoesUsuario = [
         {
             nome:'nome',
             valido: nomeValido,
-            mensagem: 'Nome de usuário deve ter no mínimo 6 caracteres'
+            mensagem: 'Nome de usuário deve ter no mínimo 3 caracteres'
         },
         {
             nome: 'senha',
@@ -46,13 +53,15 @@ class UsuarioController {
         res.status(400).json(erros)
     } else {
 
+    const criptografia = crypto.createHash("md5").update(senha).digest("hex");
+
     usuario.nome = nome
     usuario.sobrenome = sobrenome
     usuario.cpf = cpf
     usuario.dataNascimento = dataNascimento
     usuario.tipoEscola = tipoEscola
     usuario.email = email
-    usuario.senha = senha
+    usuario.senha = criptografia;
 
     usuario.insertUsuario(req, res)
     }

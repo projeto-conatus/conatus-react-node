@@ -28,7 +28,8 @@ routes.get("/selectMentores", MentoresController.selectMentorAction)
 
 
 //Usuarios
-routes.post("/selectUsuarios", UsuarioController.selectUsuarioAction)
+routes.post("/validaUsuario", UsuarioController.validaUsuarioAction)
+routes.post("/insertUsuario", UsuarioController.insertUsuarioAction)
 
 //Vagas
 routes.get("/selectVagas", VagasController.selectVagaAction )
