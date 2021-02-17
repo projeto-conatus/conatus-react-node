@@ -3,6 +3,7 @@ import Header from "../../components/Header";
 
 import "bootstrap/dist/css/bootstrap.css";
 import Cadastrar from "./cadastrar";
+import Editar from "./editar";
 
 const style = {
   textAlign: "center",
@@ -16,22 +17,32 @@ const style = {
 
 const AreaAdm = () => {
   const [cadastro, setCadastro] = React.useState(false);
-  const [artigo, setArtigo] = React.useState([])
+  const [editar, setEditar] = React.useState(false);
+  const [artigo, setArtigo] = React.useState([]);
 
   React.useEffect(() => {
     async function buscarArtigos() {
-      const req = await fetch('http://localhost:3011/selectartigo')
-      console.log(req);
-      const res = await req.json()
-      setArtigo(res)
+      const req = await fetch("http://localhost:3011/selectartigo");
+      const res = await req.json();
+      setArtigo(res);
     }
-    buscarArtigos()
-  }, [])
+    buscarArtigos();
+  }, [setArtigo]);
 
+  function handleDelete(id) {
+    fetch(`http://localhost:3011/deleteArtigo/${id}`, {
+      method: "DELETE",
+      body: JSON.stringify(id)
+    })
+      .then((res) => setArtigo(artigo.filter(art => art.id !== id)));
+  }
 
-  function handleClick(e) {
-    e.preventDefault();
+  function handleCadastro() {
     setCadastro((cadastro) => (cadastro = !cadastro));
+  }
+
+  function handleEditar(id) {
+    setEditar((editar) => (editar = !editar)); 
   }
 
   return (
@@ -40,7 +51,7 @@ const AreaAdm = () => {
 
       <div className="container mt-5">
         <div className="table-responsive">
-          <h2>Área de Administração</h2>
+          <h4 className="text-center">Área de Administração</h4>
           <h3 className="tituloArtigos" style={style}>
             Artigos cadastrados no banco de dados
           </h3>
@@ -56,50 +67,40 @@ const AreaAdm = () => {
 
             <tbody>
               {artigo &&
-                artigo.map(({id, idAutor, titulo, subtitulo, data}) => (
-              <tr key={id}>
-                <td>{titulo}</td>
-                <td>{subtitulo}</td>
-                <td>{idAutor}</td>
-                <td>{data}</td>
-                <td>
-                  <button className="btn btn-warning">
-                    <a name="btn_editar" href="##" style={{textDecoration: 'none', color: 'white'}}>
-                      Editar
-                    </a>
-                  </button>
-                </td>
-                <td>
-                  <form>
-                    <input type="hidden" name="id" />
-                    <button
-                      name="btn_deletar"
-                      className="btn btn-danger"
-                    >
-                      <a name="btn_deletar" href="##" style={{textDecoration: 'none', color: 'white'}}>
+                artigo.map(({ id, idAutor, titulo, subtitulo, data }) => (
+                  <tr key={id}>
+                    <td>{titulo}</td>
+                    <td>{subtitulo}</td>
+                    <td>{idAutor}</td>
+                    <td>{data}</td>
+                    <td>
+                      <button className="btn btn-warning" onClick={() => handleEditar(id)}>{!editar ? 'Editar' : 'Ocultar'}</button>
+                    </td>
+                    <td>
+                      <button
+                        className="btn btn-danger"
+                        onClick={() => handleDelete(id)}
+                      >
                         Apagar
-                      </a>
-                    </button>
-                  </form>
-                </td>
-              </tr>
-              ))
+                      </button>
+                    </td>
+                  </tr>
+                ))
               }
             </tbody>
           </table>
-          <br />
-
+          {editar && <Editar />}
           {cadastro && <Cadastrar />}
 
           <div className="text-center">
-            <a
-              href="/"
-              className={!cadastro ? "btn btn-primary mb-3" : "btn btn-danger mb-3"}
-              role="button"
-              onClick={handleClick}
+            <button
+              className={
+                !cadastro ? "btn btn-primary mb-3" : "btn btn-danger mb-3"
+              }
+              onClick={handleCadastro}
             >
               {!cadastro ? "Cadastrar novos artigos" : "Ocultar "}
-            </a>
+            </button>
           </div>
         </div>
       </div>

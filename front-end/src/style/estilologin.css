@@ -150,6 +150,13 @@ body {
 
   .botaoEntrar2:hover {
     background: #4050b4;
+    color: #f5f5f5;
+    text-decoration: none;
+  }
+
+  .botaoEntrar2 a:hover {
+    color: #f5f5f5;
+    text-decoration: none;
   }
 
   .feedback_seg {

@@ -89,6 +89,8 @@ body {
   .botaoEntrar:hover {
     background: #1d238b;
     border: 3px solid transparent;
+    color: #f5f5f5;
+    text-decoration: none;
   }
 
 }
