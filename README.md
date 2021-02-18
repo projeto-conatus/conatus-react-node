@@ -8,8 +8,9 @@
 ![experimental](https://img.shields.io/static/v1?label=&message=HTML&color=orange)
 ![experimental](https://img.shields.io/static/v1?label=&message=Sql&color=red)
 ![experimental](https://img.shields.io/static/v1?label=&message=Css&color=blue)
-![experimental](https://img.shields.io/static/v1?label=&message=Php&color=purple)
+![experimental](https://img.shields.io/static/v1?label=&message=Node&color=green)
 ![experimental](https://img.shields.io/static/v1?label=&message=Bootstrap&color=violet)
+![experimental](https://img.shields.io/static/v1?label=&message=React&color=darkblue)
 
 ### Status do projeto
 
