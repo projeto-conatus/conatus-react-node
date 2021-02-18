@@ -21,14 +21,13 @@ class Usuario {
 
     if(!this.nome || !this.sobrenome || !this.cpf || !this.email || !this.senha) {
       erros.push({ mensagem : "Por favor preencha todos os campos"})
-
-  }
+    }
     if (this.nome.length < 3) {
-        erros.push({ mensagem: "Nome de usuário deve ter, pelo menos, 3 dígitos" })
+      erros.push({ mensagem: "Nome de usuário deve ter, pelo menos, 3 dígitos" })
     }
 
     if (this.senha.length <6) {
-        erros.push({ mensagem: "Senha deve ter, pelo menos, 6 dígitos" })
+      erros.push({ mensagem: "Senha deve ter, pelo menos, 6 dígitos" })
     }
 
     if(this.cpf.length < 11) {
@@ -36,16 +35,34 @@ class Usuario {
     }
 
     if(erros.length > 0){
-        res.status(400).json(erros)
-    } else {
+      res.status(400).json(erros)
+    } 
+    else{
       db.query(
-        `INSERT INTO usuario (nome, sobrenome, cpf, dataNascimento, escolaridade, tipoEscola, email, senha) VALUES  ('${this.nome}', '${this.sobrenome}', '${this.cpf}', '${this.dataNascimento}', '${this.escolaridade}', '${this.tipoEscola}', '${this.email}', '${this.senha}')`,
-        (error, result) => { error ? res.send(error) : res.status(201).send("Usuario cadastrado!");
+      `SELECT * FROM usuario WHERE email = '${this.email}' OR cpf = '${this.cpf}'`,
+        (error, result) => {
+            if(error){
+                res.send({error: error})
+            }
+            //console.log(result.length)
+            if(result.length > 0){
+                erros.push({ mensagem: "CPF e/ou e-mail já cadastrado" })
+                res.send(erros)
+            } else {
+              db.query(
+                `INSERT INTO usuario (nome, sobrenome, cpf, dataNascimento, escolaridade, tipoEscola, email, senha) VALUES  ('${this.nome}', '${this.sobrenome}', '${this.cpf}', '${this.dataNascimento}', '${this.escolaridade}', '${this.tipoEscola}', '${this.email}', '${this.senha}')`,
+                (error, result) => { error ? res.send(error) : res.status(201).send("Usuario cadastrado!");
+                }
+              );
+            }
         }
-      );
+
+      )
     }
-  }    
+
+  }  
     
+
 
   //query para selecionar todos usuário do BD (utilizar para validar) da tabela usuario
   validaUsuario(req, res) {

@@ -9,31 +9,7 @@ class Colaboradores {
         this.nome;
         this.senha;
     }
-    //query para selecionar todos os colaboradores do banco
-    selectPorNome(req, res) {
-        db.query(
-            `SELECT * FROM colaborador WHERE nome = '${this.nome}'`,
-            (error, result) => {
-                if(error){
-                    res.send({error: error})
-                }
-                if(result.length > 0){
-                    res.send(result)
-                } else {
-                    res.send({message: "Usuário não cadastrado"})
-                }
-            }
-        );
-    }
-    //query para selecionar colaborador filtrado por um id
-    selectPorID(req, res) {
-        db.query(
-            `SELECT * FROM colaborador WHERE id = '${this.id}'`,
-            (error, result) => {
-                error ? res.send(error) : res.json(result);
-            }
-        );
-    }
+
     //query para inserir colaborador 
     insertColaborador(req, res) {
         const erros= [];
@@ -50,16 +26,33 @@ class Colaboradores {
         if (this.senha.length <6) {
             erros.push({ mensagem: "Senha deve ter, pelo menos, 6 dígitos" })
         }
+        
 
         if(erros.length > 0){
             res.status(400).json(erros)
-        } else {
+        } 
+        else {
             db.query(
-                `INSERT INTO colaborador (nome, senha) VALUES ('${this.nome}', '${this.senha}')`,
+            `SELECT * FROM colaborador WHERE nome = '${this.nome}'`,
                 (error, result) => {
-                    error ? res.send(error) : res.json('Novo colaborador cadastrado com sucesso!');
+                    if(error){
+                        res.send({error: error})
+                    }
+                    //console.log(result.length)
+                    if(result.length > 0){
+                        erros.push({ mensagem: "Usuário já cadastrado" })
+                        res.send(erros)
+                    } else {
+                        db.query(
+                            `INSERT INTO colaborador (nome, senha) VALUES ('${this.nome}', '${this.senha}')`,
+                            (error, result) => {
+                                error ? res.send(error) : res.json('Novo colaborador cadastrado com sucesso!');
+                            }
+                        );
+                    }
                 }
-            );
+
+            )
         }
     }
 

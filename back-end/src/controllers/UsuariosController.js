@@ -1,36 +1,25 @@
 //Precisamos ter uma action para validar login e para cadastrar.
 const usuario = require('../models/Usuario');
-const crypto = require('crypto');
+//const crypto = require('crypto');
+const bcrypt = require('bcrypt')
 
 class UsuarioController {
  
-  //Ação de selecionar todos os usuarios do banco
-  validaUsuarioAction(req, res) {
-    const { email, senha } = req.body;
-
-    const criptografia = crypto.createHash("md5").update(senha).digest("hex");
-
-    usuario.email = email
-    usuario.senha = criptografia;
-
-
-    usuario.validaUsuario(req, res)
-  }
-
-
   //ação de inserir o usuário no sistema
-  insertUsuarioAction(req, res) {
-    const { nome, sobrenome, cpf, dataNascimento, tipoEscola, email, senha } = req.body;
+  async insertUsuarioAction(req, res) {
+    const { nome, sobrenome, cpf, dataNascimento, escolaridade, tipoEscola, email, senha } = req.body;
 
-    const criptografia = crypto.createHash("md5").update(senha).digest("hex");
+    //const criptografia = crypto.createHash("md5").update(senha).digest("hex");
+    let hashedSenha = await bcrypt.hash(senha, 10);
 
     usuario.nome = nome
     usuario.sobrenome = sobrenome
     usuario.cpf = cpf
     usuario.dataNascimento = dataNascimento
+    usuario.escolaridade = escolaridade
     usuario.tipoEscola = tipoEscola
     usuario.email = email
-    usuario.senha = criptografia
+    usuario.senha = hashedSenha
 
     usuario.insertUsuario(req, res)
     

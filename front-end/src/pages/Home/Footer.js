@@ -40,7 +40,7 @@ const Footer = () => {
             <a
               target="_blank"
               rel="noreferrer"
-              href="https://github.com/projeto-conatus"
+              href="https://www.instagram.com/conatusprojeto"
             >
               <i className="fab fa-instagram">
                 <span>Instagram</span>
