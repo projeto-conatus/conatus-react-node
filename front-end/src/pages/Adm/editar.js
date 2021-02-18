@@ -3,6 +3,7 @@ import React from "react";
 const Editar = ( ) => {
 
   const [form, setForm] = React.useState({
+    id: '',
     titulo: '',
     subtitulo: '',
     autor: '',
@@ -11,14 +12,21 @@ const Editar = ( ) => {
   })
   const [sucesso, setSucesso] = React.useState(null)
 
-  React.useEffect(() => {
-    async function buscarArtigos() {
-      const req = await fetch("http://localhost:3011/selectartigo");
-      const res = await req.json();
-      setForm({...form}, res)
-    }
-    buscarArtigos();
-  }, []);
+  // React.useEffect(() => {
+  //   async function buscarArtigos() {
+  //     const req = await fetch("http://localhost:3011/selectartigo");
+  //     const res = await req.json();
+  //     setForm(...res, {...form,
+  //       id:'',
+  //       titulo: '',
+  //       subtitulo: '',
+  //       autor: '',
+  //       texto: '',
+  //       imagem: '',
+  //     })
+  //   }
+  //   buscarArtigos();
+  // },[]);
 
   function handleChange({target}) {
     const {id, value} = target
@@ -26,11 +34,13 @@ const Editar = ( ) => {
   }
 
 
-  function handleSubmit(artigoId) {
-    fetch(`http://localhost:3011//updateArtigo/${artigoId}`, {
+  function handleSubmit(e, {id}) {
+    e.preventDefault()
+    console.log(id)
+    fetch(`http://localhost:3011//updateArtigo/${id}`, {
       method: 'PUT',
-      body: JSON.stringify(artigoId)
-    }).then((res) => setSucesso(res))
+      body: JSON.stringify(form)
+    }).then((res) => setSucesso(res)).then(res => console.log(res))
     
   }
 
@@ -39,7 +49,7 @@ const Editar = ( ) => {
       <div className="container">
         <div className="col-md-6 offset-md-3">
           <h1>Editar artigo</h1>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={() => handleSubmit(form.id)} id={form.id}>
             <div className="form-row">
               <div className="form-group col-md-12">
                 <label htmlFor="titulo-artigo">Título</label>
