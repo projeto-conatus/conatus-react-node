@@ -1,28 +1,32 @@
 //Precisamos ter uma action para validar login e para cadastrar.
 const usuario = require('../models/Usuario');
-const crypto = require('crypto');
+//const crypto = require('crypto');
+const bcrypt = require('bcrypt');
 
 class UsuarioController {
  
   //Ação de selecionar todos os usuarios do banco
-  validaUsuarioAction(req, res) {
+  async validaUsuarioAction(req, res) {
     const { email, senha } = req.body;
 
-    const criptografia = crypto.createHash("md5").update(senha).digest("hex");
+    //const criptografia = crypto.createHash("md5").update(senha).digest("hex");
+    //let criptografia = await bcrypt.hash(senha, 10);
+  
 
-    usuario.email = email
-    usuario.senha = criptografia;
+    usuario.email = email;
+    //req.body.senha = criptografia;
 
 
-    usuario.validaUsuario(req, res)
+    usuario.validaUsuario(req, res) //executa a query de consulta de usuario no bd
   }
 
 
-  //ação de inserir o usuário no sistema
-  insertUsuarioAction(req, res) {
-    const { nome, sobrenome, cpf, dataNascimento, tipoEscola, email, senha } = req.body;
+  //Ação de inserir o usuário no sistema
+  async insertUsuarioAction(req, res) {
+   const { nome, sobrenome, cpf, dataNascimento, tipoEscola, email, senha } = req.body;
 
-    const criptografia = crypto.createHash("md5").update(senha).digest("hex");
+    //crypto.createHash("md5").update(senha).digest("hex");
+    let criptografia = await bcrypt.hash(senha, 10);
 
     usuario.nome = nome
     usuario.sobrenome = sobrenome
@@ -32,7 +36,7 @@ class UsuarioController {
     usuario.email = email
     usuario.senha = criptografia
 
-    usuario.insertUsuario(req, res)
+    usuario.insertUsuario(req, res)// executa a query no banco de dados
     
   }
 

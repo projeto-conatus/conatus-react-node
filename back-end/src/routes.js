@@ -2,12 +2,14 @@
 
 const { Router } = require('express')
 
+
 //controllers
 const ArtigosController = require('./controllers/ArtigosController')
 const ColaboradorController = require('./controllers/ColaboradorController')
 const MentoresController = require('./controllers/MentoresController')
 const VagasController = require('./controllers/VagasController')
 const UsuarioController = require('./controllers/UsuariosController')
+const estaAutenticado = require('./middleware/estaAutentica')
 
 
 const routes = new Router
@@ -23,18 +25,24 @@ routes.delete("/deleteArtigo/:id", ArtigosController.deleteArtigoAction)
 routes.post("/insertColaborador", ColaboradorController.insertColaboradorAction)
 routes.post("/validaColaborador", ColaboradorController.validaColaboradorAction)
 
-//Mentores
-routes.get("/selectMentores", MentoresController.selectMentorAction)
-
-
 //Usuarios
-routes.post("/validaUsuario", UsuarioController.validaUsuarioAction)
 routes.post("/insertUsuario", UsuarioController.insertUsuarioAction)
+
+//toda a rota colocada a partir daqui necessita de autenticação
+routes.use(estaAutenticado)
+routes.get("/autenticacao", (req, res)=>{
+    return res.json({message: "conseguimos!"})
+} )
 
 //Vagas
 routes.post("/validaVagas", VagasController.selectVagaAction)
 
+//Usuarios
+routes.post("/validaUsuario", UsuarioController.validaUsuarioAction)
+
+//Mentores
+routes.get("/selectMentores", MentoresController.selectMentorAction)
 
 
 
-module. exports = routes
+module.exports = routes
