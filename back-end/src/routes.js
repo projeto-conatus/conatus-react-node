@@ -2,9 +2,11 @@
 const { Router } = require('express')
 const app = require('./app')
 
-const passport = require('passport')
+//trecho de código de validação via passport
+/*const passport = require('passport')
 const inicializePassport = require('./passport-config')
-inicializePassport(passport)
+inicializePassport(passport)*/
+
 
 
 
@@ -14,6 +16,7 @@ const ColaboradorController = require('./controllers/ColaboradorController')
 const MentoresController = require('./controllers/MentoresController')
 const VagasController = require('./controllers/VagasController')
 const UsuarioController = require('./controllers/UsuariosController')
+const estaAutenticado = require('./middleware/estaAutentica')
 
 
 const routes = new Router
@@ -26,26 +29,29 @@ routes.get("/selectArtigoId/:id", ArtigosController.selectArtigoIdAction) //reto
 routes.put("/updateArtigo/:id", ArtigosController.updateArtigoAction)
 routes.delete("/deleteArtigo/:id", ArtigosController.deleteArtigoAction)
 
-//Colaboradores
-routes.post("/insertColaborador", ColaboradorController.insertColaboradorAction)
-
 //Mentores
 routes.get("/selectMentores", MentoresController.selectMentorAction)
 
+//Colaboradores
+routes.post("/insertColaborador", ColaboradorController.insertColaboradorAction)
 
 //Usuarios
-routes.post("/insertUsuario", checkNotAuthenticated, UsuarioController.insertUsuarioAction)
-routes.post("/loginUsuario", checkNotAuthenticated, passport.authenticate('local', {
-    successRedirect: '/feed',
-    failureRedirect: '/login',
-    failureFlash: true
-}))
+routes.post("/insertUsuario", UsuarioController.insertUsuarioAction)
+
+//Toda a rota colocada daqui pra baixo necessita de autenticação
+routes.use(estaAutenticado)
+routes.get("/autenticacao", (req, res)=>{
+    return res.json({message: "conseguimos!"})
+} )
 
 //Vagas
 routes.post("/validaVagas", VagasController.selectVagaAction)
 
+//Usuarios
+routes.post("/validaUsuario", UsuarioController.validaUsuarioAction)
 
 
+/* funções de autenticação do para utilização do metodo passport
 function checkAuthenticated(req, res, next) { //essa ele chama na rota da página pós login, por exemplo
     if(req.isAuthenticated()) {
         return next() 
@@ -59,6 +65,6 @@ function checkNotAuthenticated(req, res, next) { //essa chama nas rotas que não
         return res.redirect('/feed') 
     }
     next()
-}
+}*/
 
-module. exports = routes
+module.exports = routes

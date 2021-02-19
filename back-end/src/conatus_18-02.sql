@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Tempo de geração: 17/02/2021 às 17:46
+-- Tempo de geração: 18/02/2021 às 15:15
 -- Versão do servidor: 8.0.23-0ubuntu0.20.04.1
 -- Versão do PHP: 7.4.3
 
@@ -33,7 +33,7 @@ CREATE TABLE `artigo` (
   `titulo` varchar(50) DEFAULT NULL,
   `subtitulo` varchar(50) DEFAULT NULL,
   `texto` longtext,
-  `imagem` varchar(300) DEFAULT NULL,
+  `imagem` varchar(100) DEFAULT NULL,
   `data` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `autor` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -62,6 +62,7 @@ CREATE TABLE `autores` (
 --
 
 INSERT INTO `autores` (`idAutor`, `nome`) VALUES
+('A000', 'Conatus'),
 ('A001', 'Nathalia Dantas'),
 ('A002', 'Carlos Eduardo'),
 ('A003', 'Marcos Antônio'),
@@ -87,8 +88,8 @@ CREATE TABLE `colaborador` (
 
 INSERT INTO `colaborador` (`idColaborador`, `nome`, `senha`) VALUES
 (1, 'root', '$2a$10$s9dT2.pHleTJZ7oRmuO41eMStVywUwpUEm1AcVBRQ552C.hOD/s8C'),
-(2, 'teste1', '123456'),
-(13, 'testeCrypto', 'e10adc3949ba59abbe56e057f20f883e');
+(13, 'testeCrypto', 'e10adc3949ba59abbe56e057f20f883e'),
+(18, 'testeBcrypt', '$2b$10$t6LY8WUcpE/Fz7L3c5cSRuGz2LyzJ6k9PMpEPKUipX4VdYF/Sl/s6');
 
 -- --------------------------------------------------------
 
@@ -99,10 +100,10 @@ INSERT INTO `colaborador` (`idColaborador`, `nome`, `senha`) VALUES
 CREATE TABLE `mentor` (
   `idMentor` int NOT NULL,
   `nome` varchar(50) DEFAULT NULL,
-  `cargoAtual` varchar(45) DEFAULT NULL,
-  `formacao` varchar(45) DEFAULT NULL,
+  `cargoAtual` varchar(50) DEFAULT NULL,
+  `formacao` varchar(50) DEFAULT NULL,
   `descricao` longtext,
-  `linkedin` varchar(45) DEFAULT NULL,
+  `linkedin` varchar(100) DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL,
   `foto` varchar(300) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -129,8 +130,15 @@ CREATE TABLE `usuario` (
   `escolaridade` varchar(50) DEFAULT NULL,
   `tipoEscola` varchar(50) DEFAULT NULL,
   `email` varchar(50) NOT NULL,
-  `senha` varchar(50) NOT NULL
+  `senha` varchar(300) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Despejando dados para a tabela `usuario`
+--
+
+INSERT INTO `usuario` (`idUsuario`, `nome`, `sobrenome`, `cpf`, `dataNascimento`, `escolaridade`, `tipoEscola`, `email`, `senha`) VALUES
+(20, 'Marcos', 'Santos', '12312312312', '01/01/1993', 'Ensino Médio', 'Pública - Municipal', 'marcos@email.com', '$2b$10$3wan4btJCpxfYu.wGLh3hugqpXZHyEqEKUuQ5Nxfe.PNcM.r8za/K');
 
 -- --------------------------------------------------------
 
@@ -190,8 +198,6 @@ ALTER TABLE `mentor`
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`idUsuario`),
   ADD UNIQUE KEY `id_Usuario` (`idUsuario`),
-  ADD UNIQUE KEY `cpf` (`cpf`),
-  ADD UNIQUE KEY `email` (`email`),
   ADD KEY `escolaridade_idx` (`escolaridade`),
   ADD KEY `escola_idx` (`tipoEscola`);
 
@@ -215,7 +221,7 @@ ALTER TABLE `artigo`
 -- AUTO_INCREMENT de tabela `colaborador`
 --
 ALTER TABLE `colaborador`
-  MODIFY `idColaborador` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `idColaborador` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de tabela `mentor`
@@ -227,7 +233,7 @@ ALTER TABLE `mentor`
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `idUsuario` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `idUsuario` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de tabela `vaga`
