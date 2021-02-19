@@ -50,7 +50,6 @@ hr {
 }
 
 section {
-  background: #e5e5e5;
   border-radius: 10px;
   margin: 1rem auto;
   width: 100%;
@@ -80,8 +79,18 @@ section {
 }
 
 .artigos {
-  height: 625px;
+  min-height: 625px;
   overflow: auto;
+}
+
+.artigos pre {
+  width: 95%;
+  height: 100%;
+  font-size: 1.2rem;
+  margin: 0 auto .7rem;
+  flex-wrap: wrap;
+  font-family: 'Nunito', sans-serif;
+  white-space: pre-wrap;
 }
 
 .vagas {
@@ -204,6 +213,7 @@ section {
 .listaArtigos,
 .publi,
 .novidades {
+  background: #e5e5e5;
   height: 300px;
   width: 90%;
   overflow: auto;
@@ -308,7 +318,6 @@ section::-webkit-scrollbar-track {
   }
 
   .vaga {
-    /* width: 30%; */
     height: 340px;
     min-width: 200px;
     max-width: 330px;
@@ -353,9 +362,8 @@ section::-webkit-scrollbar-track {
 
   .artigos {
     background: transparent;
-    overflow: auto;
     min-height: 85.9vh;
-    height: 80vh;
+    height: initial;
     width:100%;
     margin: 0;
     display: flex;
@@ -367,10 +375,14 @@ section::-webkit-scrollbar-track {
     height: 220px;
   }
 
-  .artigos p {
+  .artigos pre {
     width: 75%;
+    height: 100%;
     font-size: 1.2rem;
     margin: 0 auto .7rem;
+    flex-wrap: wrap;
+    font-family: 'Nunito', sans-serif;
+    white-space: pre-wrap;
   }
 
   .publi h3,

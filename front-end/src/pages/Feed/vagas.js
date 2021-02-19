@@ -12,7 +12,7 @@ const Vagas = () => {
 
   React.useEffect(() => {
     async function buscarVagas() {
-      const req = await fetch('http://localhost:3011/selectvagas')
+      const req = await fetch('http://localhost:3011/validavagas')
       const res = await req.json()
       setVaga(res)
     }
@@ -31,7 +31,7 @@ const Vagas = () => {
               <div key={idVaga} className="vaga">
                 <h3>{cargo}</h3>
                 <p>{descricao}</p>
-                <p>{empresa}</p>
+                <p>Empresa: {empresa}</p>
                 <p>Rio de Janeiro, RJ</p>
                 <a href={contato} target="_blank" rel="noreferrer">Saiba Mais</a>
               </div>

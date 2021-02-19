@@ -8,6 +8,7 @@ import curriculo from "../../images/cursos/curriculo1.png";
 
 import Menu from "../../components/Menu";
 import TituloFeed from "../../components/TituloFeed";
+import { NavLink } from "react-router-dom";
 
 const Cursos = () => {
   return (
@@ -17,13 +18,13 @@ const Cursos = () => {
       <TituloFeed titulo="Cursos" />
 
       <main className="conteudoPrincipal2">
-        <a className="cursos" href="curso">
+        <NavLink className="cursos" to="/curso">
           <img
             src={informatica}
             alt="Primeiros passos em informática"
             title="Primeiros passos em informática"
           />
-        </a>
+        </NavLink>
         <a className="cursos" href="##">
           <img
             src={ingles}

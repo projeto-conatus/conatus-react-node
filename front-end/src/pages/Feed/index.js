@@ -34,20 +34,17 @@ const Feed = () => {
                 <h3>{subtitulo}</h3>
                 <p className="autorArtigo">Escrito por: {nome}</p>
                 <hr/>
-                <p>{texto}</p>
+                <pre>{texto}</pre>
+                <hr />
               </section>
+              
           ))
         }
       </main>
 
         <div className="lateral">
           <section className="listaArtigos">
-            <h3>Lista de Artigos</h3>
-            <ul>
-              <li>
-                <a href="##"> | 20/01/21 </a>
-              </li>
-            </ul>
+            <h3>Parceiros</h3>
           </section>
 
           <section className="publi">
