@@ -36,7 +36,6 @@ class Usuario {
         mensagem: "Nome de usuário deve ter, pelo menos, 3 dígitos",
       });
     }
-
     if (this.senha.length < 6) {
       erros.push({ mensagem: "Senha deve ter, pelo menos, 6 dígitos" });
     }
@@ -55,9 +54,8 @@ class Usuario {
           if (error) {
             res.send({ error: error });
           }
-          //console.log(result.length)
           if (result.length > 0) {
-            erros.push({ mensagem: "CPF e/ou e-mail já cadastrado" });
+            erros.push({ mensagem: "CPF e/ou email já cadastrado" });
             res.send(erros);
           } else {
             db.query(
@@ -73,7 +71,6 @@ class Usuario {
       );
     }
   }
-
   //query para selecionar todos usuário do BD (utilizar para validar) da tabela usuario
   async validaUsuario(req, res) {
     const { senha: password, email } = req.body;
@@ -96,7 +93,10 @@ class Usuario {
           const { senha, idUsuario } = result[0];
           const senhaConfere = compare(password, senha, (error, result) => {
             if (error) {
-              return res.status(400).json({ message: "", error });
+            
+              return res
+                .status(400)
+                .json({ message: "", error });
             }
             console.log(result);
             if (!result) {

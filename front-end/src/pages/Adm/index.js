@@ -90,7 +90,7 @@ const AreaAdm = () => {
             </tbody>
           </table>
           {editar && <Editar />}
-          {cadastro && <Cadastrar />}
+          {cadastro && <Cadastrar  />}
 
           <div className="text-center">
             <button

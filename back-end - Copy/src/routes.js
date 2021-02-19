@@ -1,13 +1,6 @@
 //Neste arquivo ficam todas as nossas rotas
+
 const { Router } = require('express')
-const app = require('./app')
-
-//trecho de código de validação via passport
-/*const passport = require('passport')
-const inicializePassport = require('./passport-config')
-inicializePassport(passport)*/
-
-
 
 
 //controllers
@@ -21,7 +14,6 @@ const estaAutenticado = require('./middleware/estaAutentica')
 
 const routes = new Router
 
-
 //Artigos
 routes.get("/selectArtigo", ArtigosController.selectArtigoAction) //retorna todos os dados do artigo e autor
 routes.post("/insertArtigo", ArtigosController.insertArtigoAction) //cadastrar novo artigo
@@ -31,11 +23,12 @@ routes.delete("/deleteArtigo/:id", ArtigosController.deleteArtigoAction)
 
 //Colaboradores
 routes.post("/insertColaborador", ColaboradorController.insertColaboradorAction)
+routes.post("/validaColaborador", ColaboradorController.validaColaboradorAction)
 
 //Usuarios
 routes.post("/insertUsuario", UsuarioController.insertUsuarioAction)
 
-//Toda a rota colocada daqui pra baixo necessita de autenticação
+//toda a rota colocada a partir daqui necessita de autenticação
 routes.use(estaAutenticado)
 routes.get("/autenticacao", (req, res)=>{
     return res.json({message: "conseguimos!"})
@@ -50,20 +43,6 @@ routes.post("/validaUsuario", UsuarioController.validaUsuarioAction)
 //Mentores
 routes.get("/selectMentores", MentoresController.selectMentorAction)
 
-/* funções de autenticação do passport
-function checkAuthenticated(req, res, next) { //essa ele chama na rota da página pós login, por exemplo
-    if(req.isAuthenticated()) {
-        return next() 
-    }
-    
-    res.redirect('/login')
-} 
 
-function checkNotAuthenticated(req, res, next) { //essa chama nas rotas que não precisa estar autenticado
-    if(req.isAuthenticated()){
-        return res.redirect('/feed') 
-    }
-    next()
-}*/
 
 module.exports = routes

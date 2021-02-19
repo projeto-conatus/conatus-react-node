@@ -32,10 +32,9 @@ class UsuarioController {
     usuario.sobrenome = sobrenome
     usuario.cpf = cpf
     usuario.dataNascimento = dataNascimento
-    usuario.escolaridade = escolaridade
     usuario.tipoEscola = tipoEscola
     usuario.email = email
-    usuario.senha = hashedSenha
+    usuario.senha = criptografia
 
     usuario.insertUsuario(req, res)// executa a query no banco de dados
     
