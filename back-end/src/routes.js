@@ -7,9 +7,6 @@ const app = require('./app')
 const inicializePassport = require('./passport-config')
 inicializePassport(passport)*/
 
-
-
-
 //controllers
 const ArtigosController = require('./controllers/ArtigosController')
 const ColaboradorController = require('./controllers/ColaboradorController')
