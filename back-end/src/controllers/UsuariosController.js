@@ -23,10 +23,10 @@ class UsuarioController {
 
   //Ação de inserir o usuário no sistema
   async insertUsuarioAction(req, res) {
-   const { nome, sobrenome, cpf, dataNascimento, tipoEscola, email, senha } = req.body;
+   const { nome, sobrenome, cpf, dataNascimento, escolaridade, tipoEscola, email, senha } = req.body;
 
     //crypto.createHash("md5").update(senha).digest("hex");
-    let criptografia = await bcrypt.hash(senha, 10);
+    let hashedSenha = await bcrypt.hash(senha, 10);
 
     usuario.nome = nome
     usuario.sobrenome = sobrenome
