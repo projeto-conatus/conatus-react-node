@@ -29,6 +29,9 @@ routes.get("/selectArtigoId/:id", ArtigosController.selectArtigoIdAction) //reto
 routes.put("/updateArtigo/:id", ArtigosController.updateArtigoAction)
 routes.delete("/deleteArtigo/:id", ArtigosController.deleteArtigoAction)
 
+//Mentores
+routes.get("/selectMentores", MentoresController.selectMentorAction)
+
 //Colaboradores
 routes.post("/insertColaborador", ColaboradorController.insertColaboradorAction)
 
@@ -47,10 +50,8 @@ routes.post("/validaVagas", VagasController.selectVagaAction)
 //Usuarios
 routes.post("/validaUsuario", UsuarioController.validaUsuarioAction)
 
-//Mentores
-routes.get("/selectMentores", MentoresController.selectMentorAction)
 
-/* funções de autenticação do passport
+/* funções de autenticação do para utilização do metodo passport
 function checkAuthenticated(req, res, next) { //essa ele chama na rota da página pós login, por exemplo
     if(req.isAuthenticated()) {
         return next() 
