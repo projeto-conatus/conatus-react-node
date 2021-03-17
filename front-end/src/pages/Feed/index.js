@@ -3,10 +3,9 @@ import Menu from "../../components/Menu";
 
 import "../../style/feedInicio.css";
 
-import instagram from "../../images/publi/instagram.png";
-import recode from "../../images/publi/recode.png";
 import TituloFeed from "../../components/TituloFeed";
 import { Outlet } from "react-router";
+import Sidebar from "./barra-lateral";
 
 const Feed = () => {
   const [artigo, setArtigo] = React.useState([])
@@ -43,28 +42,7 @@ const Feed = () => {
         }
       </main>
         <Outlet />
-        <div className="lateral">
-          <section className="listaArtigos">
-            <h3>Parceiros</h3>
-          </section>
-
-          <section className="publi">
-            <h3>Publicidade</h3>
-            <img
-              src={instagram}
-              alt="Nos siga no Instagram"
-              title="Nos siga no Instagram"
-            />
-            <img src={recode} alt="Conheça a Recode" title="Conheça a Recode" />
-          </section>
-
-          <section className="novidades">
-            <h3>Novidades</h3>
-            <p></p>
-          </section>
-        </div>
-       
-
+        <Sidebar />
     </>
   );
 };

@@ -1,10 +1,10 @@
-.conteudoPrincipal2 {
+.cursosSection {
   display: flex;
   flex-direction: column;
   margin: 2rem auto;
 }
 
-.conteudoPrincipal2 h1,
+.cursosSection h1,
 h3 {
   text-align: center;
   font-family: "nunito", sans-serif;
@@ -12,14 +12,14 @@ h3 {
   letter-spacing: 0.1rem;
 }
 
-.conteudoPrincipal2 h3 {
+.cursosSection h3 {
   font-size: 17px;
   font-weight: normal;
   letter-spacing: 0.05em;
   color: #3a3a3a;
 }
 
-.conteudoPrincipal2 p {
+.cursosSection p {
   width: 95%;
   margin: 0 auto;
   font-size: 15px;
@@ -49,14 +49,17 @@ h3 {
 }
 
 @media (min-width: 940px) {
-  .conteudoPrincipal2 {
-    display: flex;
+  .cursosSection {
     flex-direction: row;
     flex-wrap: wrap;
-    width: 75%;
-    min-height: 70vh;
-    margin:0 0 0 18%;
-    align-items: center;
+    background: transparent;
+    justify-content: center;
+    align-items: baseline;
+    min-height: 85.9vh;
+    height: 80vh;
+    width: 95%;
+    max-width: 1380px;
+    margin: 0 !important;
   }
 
   .cursos {

@@ -35,7 +35,6 @@ const Editar = ( { id } ) => {
   }
 
   function handleSubmit(id) {
-    // e.preventDefault()
     console.log(id)
     fetch(`http://localhost:3011//updateArtigo/${id}`, {
       method: 'PUT',
