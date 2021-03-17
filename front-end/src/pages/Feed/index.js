@@ -6,6 +6,7 @@ import "../../style/feedInicio.css";
 import instagram from "../../images/publi/instagram.png";
 import recode from "../../images/publi/recode.png";
 import TituloFeed from "../../components/TituloFeed";
+import { Outlet } from "react-router";
 
 const Feed = () => {
   const [artigo, setArtigo] = React.useState([])
@@ -41,7 +42,7 @@ const Feed = () => {
           ))
         }
       </main>
-
+        <Outlet />
         <div className="lateral">
           <section className="listaArtigos">
             <h3>Parceiros</h3>

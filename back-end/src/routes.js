@@ -35,6 +35,9 @@ routes.post("/insertColaborador", ColaboradorController.insertColaboradorAction)
 //Usuarios
 routes.post("/insertUsuario", UsuarioController.insertUsuarioAction)
 
+routes.get("/validaVagas", VagasController.selectVagaAction)
+
+
 //Toda a rota colocada daqui pra baixo necessita de autenticação
 routes.use(estaAutenticado)
 routes.get("/autenticacao", (req, res)=>{
@@ -42,7 +45,6 @@ routes.get("/autenticacao", (req, res)=>{
 } )
 
 //Vagas
-routes.post("/validaVagas", VagasController.selectVagaAction)
 
 //Usuarios
 routes.post("/validaUsuario", UsuarioController.validaUsuarioAction)

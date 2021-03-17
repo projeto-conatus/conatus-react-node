@@ -3,9 +3,10 @@ import Header from '../../components/Header'
 
 import '../../style/estilologin.css'
 import arteLogin from '../../images/arte_login.svg'
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate()
   const [sucesso, setSucesso] = React.useState(null)
   const [form, setForm] = React.useState({
     email: '',
@@ -19,15 +20,16 @@ const Login = () => {
 
   function handleSubmit(e) {
     e.preventDefault()
-    // fetch('https://localhost:3011/loginusuario', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Accept': 'application/json',
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify(form)
-    // }).then((res) => setSucesso(res))
-    setForm({...form}, console.log(form))
+    fetch('http://localhost:3011/validaUsuario', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(form)
+    }).then(res => res.json()).then(data => console.log(data)).then((res) => setSucesso(res))
+    // setForm({...form}, console.log(form))
+    navigate('/feed')
   }
 
   return (
@@ -64,7 +66,6 @@ const Login = () => {
               className="botaoEntrar2"
               name="logar"
               title="Clique após ter preenchido seus dados"
-              // to="/feed"
             >
               Entrar
             </button>

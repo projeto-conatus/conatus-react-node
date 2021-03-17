@@ -89,7 +89,7 @@ const AreaAdm = () => {
               }
             </tbody>
           </table>
-          {editar && <Editar />}
+          {editar && <Editar key={artigo.id} idArtigo={artigo.id} />}
           {cadastro && <Cadastrar  />}
 
           <div className="text-center">
